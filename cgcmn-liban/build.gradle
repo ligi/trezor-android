@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-    compile "joda-time:joda-time:2.9.9"
+//    compile "joda-time:joda-time:2.9.9"
     compile "com.android.support:support-v4:${project.ext.support_version}"
     compile "com.android.support:appcompat-v7:${project.ext.support_version}"
     compile 'com.squareup.okhttp3:okhttp:3.8.0'
