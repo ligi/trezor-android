@@ -17,9 +17,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.joda.time.DateMidnight;
-import org.joda.time.DateTime;
-import org.joda.time.Duration;
 import tinyguava.ImmutableList;
 
 public class ApiDataIO {
@@ -34,16 +31,10 @@ public class ApiDataIO {
         boolean write(boolean value);
         void write(int value);
         void write(long value);
-        void write(float value);
-        void write(double value);
 
         void write(byte[] value);
-        void write(int[] value);
         void write(String value);
         void write(Bitmap value, int flags);
-        void write(DateTime value);
-        void write(DateMidnight value);
-        void write(Duration value);
         void write(IApiObject value, int flags);
         void writeWithName(IApiParcelable value, int flags);
         void write(Collection<? extends IApiObject> value, int flags);
@@ -59,7 +50,6 @@ public class ApiDataIO {
         long readLong();
 
         byte[] readBytes();
-        int[] readIntArray();
         String readString();
         Bitmap readBitmap();
         <T extends IApiObject> T readObject(ApiCreator<T> creator);
@@ -110,22 +100,6 @@ public class ApiDataIO {
             }
         }
 
-        @Override
-        public final void write(DateTime value) {
-            write(value.getMillis());
-            write(value.getZone().getID());
-        }
-
-        @Override
-        public final void write(DateMidnight dateMidnight) {
-            write(dateMidnight.getMillis());
-            write(dateMidnight.getZone().getID());
-        }
-
-        @Override
-        public final void write(Duration value) {
-            write(value.getMillis());
-        }
 
         @Override
         public final void write(IApiObject value, int flags) {
@@ -300,24 +274,6 @@ public class ApiDataIO {
         }
 
         @Override
-        public final void write(float value) {
-            try {
-                dataOutputStream.writeFloat(value);
-            } catch (IOException e) {
-                throw new RuntimeException();
-            }
-        }
-
-        @Override
-        public final void write(double value) {
-            try {
-                dataOutputStream.writeDouble(value);
-            } catch (IOException e) {
-                throw new RuntimeException();
-            }
-        }
-
-        @Override
         public final void write(byte[] value) {
             try {
                 dataOutputStream.writeInt(value.length);
@@ -327,17 +283,6 @@ public class ApiDataIO {
             }
         }
 
-        @Override
-        public void write(int[] value) {
-            try {
-                dataOutputStream.writeInt(value.length);
-                for (int i = 0; i < value.length; i++)
-                    dataOutputStream.writeInt(value[i]);
-            }
-            catch (IOException ex) {
-                throw new RuntimeException();
-            }
-        }
     }
 
     public static class ApiDataInputStreamWrp extends ApiDataInputBase {
@@ -441,20 +386,6 @@ public class ApiDataIO {
                 throw new RuntimeException();
             }
         }
-
-        @Override
-        public int[] readIntArray() {
-            try {
-                int[] ret;
-                ret = new int[dataInputStream.readInt()];
-                for (int i = 0; i < ret.length; i++) {
-                    ret[i] = dataInputStream.readInt();
-                }
-                return ret;
-            } catch (IOException e) {
-                throw new RuntimeException();
-            }
-        }
     }
 
 
@@ -497,31 +428,10 @@ public class ApiDataIO {
         }
 
         @Override
-        public void write(float value) {
-            parcel.writeFloat(value);
-        }
-
-        @Override
-        public final void write(double value) {
-            parcel.writeDouble(value);
-        }
-
-        @Override
         public final void write(byte[] value) {
             parcel.writeByteArray(value);
         }
 
-        @Override
-        public void write(int[] value) {
-            parcel.writeIntArray(value);
-        }
-
-        // POZOR! Zamerne zaremovano ! - zaremovana implementace vytvari novy Parcel a to znamena, ze se nepouziji cache stringu a bitmap
-        // - a pak kvuli tomu treba se neobnovovaly nektere aktivity!!
-//        @Override
-//        public final void writeWithName(IApiParcelable value, int flags) {
-//            parcel.writeParcelable(value, flags);
-//        }
     }
 
     static class ApiParcelInputWrp extends ApiDataInputBase {
@@ -566,11 +476,6 @@ public class ApiDataIO {
         @Override
         public final byte[] readBytes() {
             return parcel.createByteArray();
-        }
-
-        @Override
-        public int[] readIntArray() {
-            return parcel.createIntArray();
         }
 
     }
