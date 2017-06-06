@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.circlegate.liban.base.BaseBroadcastReceivers.BaseLocalReceiver;
