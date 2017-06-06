@@ -22,7 +22,7 @@ import com.circlegate.liban.ws.WsBase.IWsParam;
 import com.circlegate.liban.ws.WsBase.IWsResult;
 import com.circlegate.liban.ws.WsBase.WsParam;
 import com.circlegate.liban.ws.WsBase.WsResult;
-import com.google.common.collect.ImmutableList;
+import tinyguava.ImmutableList;
 
 import org.joda.time.Duration;
 import org.json.JSONArray;

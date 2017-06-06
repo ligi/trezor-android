@@ -11,7 +11,7 @@ import com.circlegate.liban.base.ApiBase.IApiObject;
 import com.circlegate.liban.base.ApiBase.IApiParcelable;
 
 import com.circlegate.liban.utils.AppUtils;
-import com.google.common.collect.ImmutableList;
+import tinyguava.ImmutableList;
 
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;

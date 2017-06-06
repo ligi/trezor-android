@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.circlegate.liban.R;
 import com.circlegate.liban.view.LoadingView;
-import com.google.common.collect.ImmutableList;
+import tinyguava.ImmutableList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
