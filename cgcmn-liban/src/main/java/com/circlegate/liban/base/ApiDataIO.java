@@ -396,10 +396,6 @@ public class ApiDataIO {
             this.parcel = parcel;
         }
 
-        public Parcel getParcel() {
-            return parcel;
-        }
-
         @Override
         protected void doWrite(String value) {
             parcel.writeString(value);
