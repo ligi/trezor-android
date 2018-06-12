@@ -103,7 +103,6 @@ dependencyVerification {
         'com.google.code.gson:gson:2.7:gson-2.7.jar:2d43eb5ea9e133d2ee2405cc14f5ee08951b8361302fdd93494a3a997b508d32',
         'com.google.errorprone:error_prone_annotations:2.0.18:error_prone_annotations-2.0.18.jar:cb4cfad870bf563a07199f3ebea5763f0dec440fcda0b318640b1feaa788656b',
         'com.google.guava:guava:22.0:guava-22.0.jar:1158e94c7de4da480873f0b4ab4a1da14c0d23d4b1902cc94a58a6f0f9ab579e',
-        'com.google.j2objc:j2objc-annotations:1.1:j2objc-annotations-1.1.jar:40ceb7157feb263949e0f503fe5f71689333a621021aa20ce0d0acee3badaa0f',
         'com.google.jimfs:jimfs:1.1:jimfs-1.1.jar:c4828e28d7c0a930af9387510b3bada7daa5c04d7c25a75c7b8b081f1c257ddd',
         'com.google.protobuf:protobuf-java:3.3.0:protobuf-java-3.3.0.jar:f3411ade77523d5f0d013d4f25c36879e66f0c5e1e4310f7096d54d0d2553554',
         'com.google.protobuf:protobuf-java:3.4.0:protobuf-java-3.4.0.jar:dce7e66b32456a1b1198da0caff3a8acb71548658391e798c79369241e6490a4',
