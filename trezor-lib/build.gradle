@@ -17,10 +17,30 @@ android {
         }
     }
 
-
     lintOptions {
         warning 'InvalidPackage'
     }
+
+    task androidJavadocs(type: Javadoc) {
+      source = android.sourceSets.main.java.source
+      classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    }
+
+    task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+      classifier = 'javadoc'
+      from androidJavadocs.destinationDir
+    }
+
+    task androidSourcesJar(type: Jar) {
+      classifier = 'sources'
+      from android.sourceSets.main.java.source
+    }
+    
+    artifacts {
+      archives androidSourcesJar
+      archives androidJavadocsJar
+    }
+
 }
 
 dependencies {
