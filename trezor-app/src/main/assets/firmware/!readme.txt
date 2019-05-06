@@ -1,1 +1,0 @@
-the file moved to ..\firmware-v2\!readme.txt
