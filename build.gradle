@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.4.0'
  classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1' // Add this line
 classpath files('libs/gradle-witness.jar')
     }
@@ -23,7 +23,3 @@ allprojects {
         minsdk = 15
     }
 }
-
-//apply plugin: 'maven'
-
-group = 'com.github.ligi'

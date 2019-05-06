@@ -50,7 +50,7 @@ dependencies {
     implementation 'com.google.protobuf:protobuf-java:3.3.0'
     implementation 'com.jakewharton.timber:timber:4.5.1'
 
-    implementation project(':android-styled-dialog')
-    implementation project(':trezor-lib')
-    implementation project(':cgcmn-liban')
+    implementation project(path: ':android-styled-dialog', configuration: 'default')
+    implementation project(path: ':trezor-lib',  configuration: 'default')
+    implementation project(path: ':cgcmn-liban',  configuration: 'default')
 }
