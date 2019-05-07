@@ -3,7 +3,12 @@ CURDIR=$(pwd)
 
 cd $CURDIR/../trezor-common/protob
 
-for i in messages types ; do
+#messages-ethereum
+#messages-management
+#messages-common 
+
+
+for i in messages ; do
     protoc --java_out=$CURDIR/trezor-lib/src/main/java -I/usr/include -I. $i.proto
 done
 

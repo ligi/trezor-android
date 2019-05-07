@@ -13,6 +13,7 @@ import android.hardware.usb.UsbManager;
 import android.hardware.usb.UsbRequest;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import com.satoshilabs.trezor.lib.protobuf.TrezorMessage;
 import com.satoshilabs.trezor.lib.protobuf.TrezorMessage.MessageType;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
@@ -82,15 +83,17 @@ public class TrezorManager {
     }
 
 
+
     public static Message parseMessageFromBytes(MessageType type, byte[] data) throws InvalidProtocolBufferException {
         try {
-            String className = com.satoshilabs.trezor.lib.protobuf.TrezorMessage.class.getName() + "$" + type.name().replace("MessageType_", "");
+            String className= TrezorMessage.class.getName();
+
+            className += "$" + type.name().replace("MessageType_", "");
             Class cls = Class.forName(className);
             Method method = cls.getDeclaredMethod("parseFrom", byte[].class);
             //noinspection PrimitiveArrayArgumentToVariableArgMethod
-            return (Message)method.invoke(null, data); // TODO cache methods for faster start?
-        }
-        catch (Exception ex) {
+            return (Message) method.invoke(null, data); // TODO cache methods for faster start?
+        } catch (Exception ex) {
             throw new InvalidProtocolBufferException("Exception while calling: parseMessageFromBytes for MessageType: " + type.name());
         }
 
