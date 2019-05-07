@@ -82,15 +82,23 @@ public class TrezorManager {
     }
 
 
+
     public static Message parseMessageFromBytes(MessageType type, byte[] data) throws InvalidProtocolBufferException {
         try {
-            String className = com.satoshilabs.trezor.lib.protobuf.TrezorMessage.class.getName() + "$" + type.name().replace("MessageType_", "");
+            String className;
+
+            if (type.name().contains("Ethereum")) {
+                className = com.satoshilabs.trezor.lib.protobuf.TrezorMessageEthereum.class.getName();
+            } else {
+                className = com.satoshilabs.trezor.lib.protobuf.TrezorMessageManagement.class.getName();
+            }
+
+            className += "$" + type.name().replace("MessageType_", "");
             Class cls = Class.forName(className);
             Method method = cls.getDeclaredMethod("parseFrom", byte[].class);
             //noinspection PrimitiveArrayArgumentToVariableArgMethod
-            return (Message)method.invoke(null, data); // TODO cache methods for faster start?
-        }
-        catch (Exception ex) {
+            return (Message) method.invoke(null, data); // TODO cache methods for faster start?
+        } catch (Exception ex) {
             throw new InvalidProtocolBufferException("Exception while calling: parseMessageFromBytes for MessageType: " + type.name());
         }
 
