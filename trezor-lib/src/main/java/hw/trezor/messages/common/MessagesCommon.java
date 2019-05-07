@@ -57,6 +57,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.Success)
       SuccessOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Success.newBuilder() to construct.
     private Success(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -75,6 +76,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -86,17 +90,17 @@ public final class MessagesCommon {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
               message_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -116,6 +120,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_Success_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_Success_fieldAccessorTable
@@ -179,6 +184,7 @@ public final class MessagesCommon {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -188,6 +194,7 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -196,6 +203,7 @@ public final class MessagesCommon {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -209,7 +217,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -236,7 +243,7 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasMessage()) {
         hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
         hash = (53 * hash) + getMessage().hashCode();
@@ -246,6 +253,17 @@ public final class MessagesCommon {
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.Success parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.Success parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.Success parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -305,6 +323,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -312,6 +331,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.Success prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -341,6 +361,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_Success_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_Success_fieldAccessorTable
@@ -363,6 +384,7 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         message_ = "";
@@ -370,15 +392,18 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_Success_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.Success getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.Success.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.Success build() {
         hw.trezor.messages.common.MessagesCommon.Success result = buildPartial();
         if (!result.isInitialized()) {
@@ -387,6 +412,7 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.Success buildPartial() {
         hw.trezor.messages.common.MessagesCommon.Success result = new hw.trezor.messages.common.MessagesCommon.Success(this);
         int from_bitField0_ = bitField0_;
@@ -400,32 +426,39 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.Success) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.Success)other);
@@ -447,10 +480,12 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -569,11 +604,13 @@ public final class MessagesCommon {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -595,11 +632,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<Success>
         PARSER = new com.google.protobuf.AbstractParser<Success>() {
+      @java.lang.Override
       public Success parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Success(input, extensionRegistry);
+        return new Success(input, extensionRegistry);
       }
     };
 
@@ -612,6 +650,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.Success getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -678,6 +717,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.Failure)
       FailureOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Failure.newBuilder() to construct.
     private Failure(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -697,6 +737,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -708,15 +751,9 @@ public final class MessagesCommon {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
               int rawValue = input.readEnum();
+                @SuppressWarnings("deprecation")
               hw.trezor.messages.common.MessagesCommon.Failure.FailureType value = hw.trezor.messages.common.MessagesCommon.Failure.FailureType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
@@ -730,6 +767,13 @@ public final class MessagesCommon {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
               message_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -749,6 +793,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_Failure_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_Failure_fieldAccessorTable
@@ -966,6 +1011,7 @@ public final class MessagesCommon {
      * <code>optional .hw.trezor.messages.common.Failure.FailureType code = 1;</code>
      */
     public hw.trezor.messages.common.MessagesCommon.Failure.FailureType getCode() {
+      @SuppressWarnings("deprecation")
       hw.trezor.messages.common.MessagesCommon.Failure.FailureType result = hw.trezor.messages.common.MessagesCommon.Failure.FailureType.valueOf(code_);
       return result == null ? hw.trezor.messages.common.MessagesCommon.Failure.FailureType.Failure_UnexpectedMessage : result;
     }
@@ -1025,6 +1071,7 @@ public final class MessagesCommon {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -1034,6 +1081,7 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1045,6 +1093,7 @@ public final class MessagesCommon {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -1062,7 +1111,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -1093,7 +1141,7 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasCode()) {
         hash = (37 * hash) + CODE_FIELD_NUMBER;
         hash = (53 * hash) + code_;
@@ -1107,6 +1155,17 @@ public final class MessagesCommon {
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.Failure parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.Failure parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.Failure parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1166,6 +1225,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -1173,6 +1233,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.Failure prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -1202,6 +1263,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_Failure_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_Failure_fieldAccessorTable
@@ -1224,6 +1286,7 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         code_ = 1;
@@ -1233,15 +1296,18 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_Failure_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.Failure getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.Failure.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.Failure build() {
         hw.trezor.messages.common.MessagesCommon.Failure result = buildPartial();
         if (!result.isInitialized()) {
@@ -1250,6 +1316,7 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.Failure buildPartial() {
         hw.trezor.messages.common.MessagesCommon.Failure result = new hw.trezor.messages.common.MessagesCommon.Failure(this);
         int from_bitField0_ = bitField0_;
@@ -1267,32 +1334,39 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.Failure) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.Failure)other);
@@ -1317,10 +1391,12 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1359,6 +1435,7 @@ public final class MessagesCommon {
        * <code>optional .hw.trezor.messages.common.Failure.FailureType code = 1;</code>
        */
       public hw.trezor.messages.common.MessagesCommon.Failure.FailureType getCode() {
+        @SuppressWarnings("deprecation")
         hw.trezor.messages.common.MessagesCommon.Failure.FailureType result = hw.trezor.messages.common.MessagesCommon.Failure.FailureType.valueOf(code_);
         return result == null ? hw.trezor.messages.common.MessagesCommon.Failure.FailureType.Failure_UnexpectedMessage : result;
       }
@@ -1491,11 +1568,13 @@ public final class MessagesCommon {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -1517,11 +1596,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<Failure>
         PARSER = new com.google.protobuf.AbstractParser<Failure>() {
+      @java.lang.Override
       public Failure parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Failure(input, extensionRegistry);
+        return new Failure(input, extensionRegistry);
       }
     };
 
@@ -1534,6 +1614,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.Failure getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -1581,6 +1662,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.ButtonRequest)
       ButtonRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ButtonRequest.newBuilder() to construct.
     private ButtonRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -1600,6 +1682,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1611,15 +1696,9 @@ public final class MessagesCommon {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
               int rawValue = input.readEnum();
+                @SuppressWarnings("deprecation")
               hw.trezor.messages.common.MessagesCommon.ButtonRequest.ButtonRequestType value = hw.trezor.messages.common.MessagesCommon.ButtonRequest.ButtonRequestType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
@@ -1633,6 +1712,13 @@ public final class MessagesCommon {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
               data_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -1652,6 +1738,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_ButtonRequest_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_ButtonRequest_fieldAccessorTable
@@ -1884,6 +1971,7 @@ public final class MessagesCommon {
      * <code>optional .hw.trezor.messages.common.ButtonRequest.ButtonRequestType code = 1;</code>
      */
     public hw.trezor.messages.common.MessagesCommon.ButtonRequest.ButtonRequestType getCode() {
+      @SuppressWarnings("deprecation")
       hw.trezor.messages.common.MessagesCommon.ButtonRequest.ButtonRequestType result = hw.trezor.messages.common.MessagesCommon.ButtonRequest.ButtonRequestType.valueOf(code_);
       return result == null ? hw.trezor.messages.common.MessagesCommon.ButtonRequest.ButtonRequestType.ButtonRequest_Other : result;
     }
@@ -1931,6 +2019,7 @@ public final class MessagesCommon {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -1940,6 +2029,7 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1951,6 +2041,7 @@ public final class MessagesCommon {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -1968,7 +2059,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -1999,7 +2089,7 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasCode()) {
         hash = (37 * hash) + CODE_FIELD_NUMBER;
         hash = (53 * hash) + code_;
@@ -2013,6 +2103,17 @@ public final class MessagesCommon {
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.ButtonRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.ButtonRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.ButtonRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2072,6 +2173,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -2079,6 +2181,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.ButtonRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -2109,6 +2212,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_ButtonRequest_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_ButtonRequest_fieldAccessorTable
@@ -2131,6 +2235,7 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         code_ = 1;
@@ -2140,15 +2245,18 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_ButtonRequest_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.ButtonRequest getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.ButtonRequest.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.ButtonRequest build() {
         hw.trezor.messages.common.MessagesCommon.ButtonRequest result = buildPartial();
         if (!result.isInitialized()) {
@@ -2157,6 +2265,7 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.ButtonRequest buildPartial() {
         hw.trezor.messages.common.MessagesCommon.ButtonRequest result = new hw.trezor.messages.common.MessagesCommon.ButtonRequest(this);
         int from_bitField0_ = bitField0_;
@@ -2174,32 +2283,39 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.ButtonRequest) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.ButtonRequest)other);
@@ -2224,10 +2340,12 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2258,6 +2376,7 @@ public final class MessagesCommon {
        * <code>optional .hw.trezor.messages.common.ButtonRequest.ButtonRequestType code = 1;</code>
        */
       public hw.trezor.messages.common.MessagesCommon.ButtonRequest.ButtonRequestType getCode() {
+        @SuppressWarnings("deprecation")
         hw.trezor.messages.common.MessagesCommon.ButtonRequest.ButtonRequestType result = hw.trezor.messages.common.MessagesCommon.ButtonRequest.ButtonRequestType.valueOf(code_);
         return result == null ? hw.trezor.messages.common.MessagesCommon.ButtonRequest.ButtonRequestType.ButtonRequest_Other : result;
       }
@@ -2358,11 +2477,13 @@ public final class MessagesCommon {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -2384,11 +2505,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<ButtonRequest>
         PARSER = new com.google.protobuf.AbstractParser<ButtonRequest>() {
+      @java.lang.Override
       public ButtonRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ButtonRequest(input, extensionRegistry);
+        return new ButtonRequest(input, extensionRegistry);
       }
     };
 
@@ -2401,6 +2523,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.ButtonRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -2424,6 +2547,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.ButtonAck)
       ButtonAckOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use ButtonAck.newBuilder() to construct.
     private ButtonAck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -2441,6 +2565,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2452,8 +2579,8 @@ public final class MessagesCommon {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -2475,6 +2602,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_ButtonAck_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_ButtonAck_fieldAccessorTable
@@ -2483,6 +2611,7 @@ public final class MessagesCommon {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -2492,11 +2621,13 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -2507,7 +2638,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -2529,12 +2659,23 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.ButtonAck parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.ButtonAck parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.ButtonAck parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2594,6 +2735,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -2601,6 +2743,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.ButtonAck prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -2630,6 +2773,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_ButtonAck_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_ButtonAck_fieldAccessorTable
@@ -2652,20 +2796,24 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_ButtonAck_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.ButtonAck getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.ButtonAck.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.ButtonAck build() {
         hw.trezor.messages.common.MessagesCommon.ButtonAck result = buildPartial();
         if (!result.isInitialized()) {
@@ -2674,38 +2822,46 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.ButtonAck buildPartial() {
         hw.trezor.messages.common.MessagesCommon.ButtonAck result = new hw.trezor.messages.common.MessagesCommon.ButtonAck(this);
         onBuilt();
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.ButtonAck) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.ButtonAck)other);
@@ -2722,10 +2878,12 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2743,11 +2901,13 @@ public final class MessagesCommon {
         }
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -2769,11 +2929,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<ButtonAck>
         PARSER = new com.google.protobuf.AbstractParser<ButtonAck>() {
+      @java.lang.Override
       public ButtonAck parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ButtonAck(input, extensionRegistry);
+        return new ButtonAck(input, extensionRegistry);
       }
     };
 
@@ -2786,6 +2947,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.ButtonAck getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -2819,6 +2981,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PinMatrixRequest)
       PinMatrixRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use PinMatrixRequest.newBuilder() to construct.
     private PinMatrixRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -2837,6 +3000,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -2848,21 +3014,22 @@ public final class MessagesCommon {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
               int rawValue = input.readEnum();
+                @SuppressWarnings("deprecation")
               hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.PinMatrixRequestType value = hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.PinMatrixRequestType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
                 bitField0_ |= 0x00000001;
                 type_ = rawValue;
+              }
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
               }
               break;
             }
@@ -2883,6 +3050,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PinMatrixRequest_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PinMatrixRequest_fieldAccessorTable
@@ -3007,11 +3175,13 @@ public final class MessagesCommon {
      * <code>optional .hw.trezor.messages.common.PinMatrixRequest.PinMatrixRequestType type = 1;</code>
      */
     public hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.PinMatrixRequestType getType() {
+      @SuppressWarnings("deprecation")
       hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.PinMatrixRequestType result = hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.PinMatrixRequestType.valueOf(type_);
       return result == null ? hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_Current : result;
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -3021,6 +3191,7 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3029,6 +3200,7 @@ public final class MessagesCommon {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -3043,7 +3215,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -3069,7 +3240,7 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasType()) {
         hash = (37 * hash) + TYPE_FIELD_NUMBER;
         hash = (53 * hash) + type_;
@@ -3079,6 +3250,17 @@ public final class MessagesCommon {
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.PinMatrixRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.PinMatrixRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.PinMatrixRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3138,6 +3320,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -3145,6 +3328,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.PinMatrixRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -3175,6 +3359,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PinMatrixRequest_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PinMatrixRequest_fieldAccessorTable
@@ -3197,6 +3382,7 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         type_ = 1;
@@ -3204,15 +3390,18 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PinMatrixRequest_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PinMatrixRequest getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PinMatrixRequest build() {
         hw.trezor.messages.common.MessagesCommon.PinMatrixRequest result = buildPartial();
         if (!result.isInitialized()) {
@@ -3221,6 +3410,7 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PinMatrixRequest buildPartial() {
         hw.trezor.messages.common.MessagesCommon.PinMatrixRequest result = new hw.trezor.messages.common.MessagesCommon.PinMatrixRequest(this);
         int from_bitField0_ = bitField0_;
@@ -3234,32 +3424,39 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.PinMatrixRequest) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.PinMatrixRequest)other);
@@ -3279,10 +3476,12 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3313,6 +3512,7 @@ public final class MessagesCommon {
        * <code>optional .hw.trezor.messages.common.PinMatrixRequest.PinMatrixRequestType type = 1;</code>
        */
       public hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.PinMatrixRequestType getType() {
+        @SuppressWarnings("deprecation")
         hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.PinMatrixRequestType result = hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.PinMatrixRequestType.valueOf(type_);
         return result == null ? hw.trezor.messages.common.MessagesCommon.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_Current : result;
       }
@@ -3337,11 +3537,13 @@ public final class MessagesCommon {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -3363,11 +3565,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<PinMatrixRequest>
         PARSER = new com.google.protobuf.AbstractParser<PinMatrixRequest>() {
+      @java.lang.Override
       public PinMatrixRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PinMatrixRequest(input, extensionRegistry);
+        return new PinMatrixRequest(input, extensionRegistry);
       }
     };
 
@@ -3380,6 +3583,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.PinMatrixRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -3429,6 +3633,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PinMatrixAck)
       PinMatrixAckOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use PinMatrixAck.newBuilder() to construct.
     private PinMatrixAck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -3447,6 +3652,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -3458,17 +3666,17 @@ public final class MessagesCommon {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
               pin_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -3488,6 +3696,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PinMatrixAck_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PinMatrixAck_fieldAccessorTable
@@ -3551,6 +3760,7 @@ public final class MessagesCommon {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -3564,6 +3774,7 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3572,6 +3783,7 @@ public final class MessagesCommon {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -3585,7 +3797,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -3612,7 +3823,7 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasPin()) {
         hash = (37 * hash) + PIN_FIELD_NUMBER;
         hash = (53 * hash) + getPin().hashCode();
@@ -3622,6 +3833,17 @@ public final class MessagesCommon {
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.PinMatrixAck parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.PinMatrixAck parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.PinMatrixAck parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3681,6 +3903,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -3688,6 +3911,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.PinMatrixAck prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -3717,6 +3941,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PinMatrixAck_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PinMatrixAck_fieldAccessorTable
@@ -3739,6 +3964,7 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         pin_ = "";
@@ -3746,15 +3972,18 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PinMatrixAck_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PinMatrixAck getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.PinMatrixAck.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PinMatrixAck build() {
         hw.trezor.messages.common.MessagesCommon.PinMatrixAck result = buildPartial();
         if (!result.isInitialized()) {
@@ -3763,6 +3992,7 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PinMatrixAck buildPartial() {
         hw.trezor.messages.common.MessagesCommon.PinMatrixAck result = new hw.trezor.messages.common.MessagesCommon.PinMatrixAck(this);
         int from_bitField0_ = bitField0_;
@@ -3776,32 +4006,39 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.PinMatrixAck) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.PinMatrixAck)other);
@@ -3823,6 +4060,7 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         if (!hasPin()) {
           return false;
@@ -3830,6 +4068,7 @@ public final class MessagesCommon {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3948,11 +4187,13 @@ public final class MessagesCommon {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -3974,11 +4215,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<PinMatrixAck>
         PARSER = new com.google.protobuf.AbstractParser<PinMatrixAck>() {
+      @java.lang.Override
       public PinMatrixAck parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PinMatrixAck(input, extensionRegistry);
+        return new PinMatrixAck(input, extensionRegistry);
       }
     };
 
@@ -3991,6 +4233,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.PinMatrixAck getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -4032,6 +4275,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PassphraseRequest)
       PassphraseRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use PassphraseRequest.newBuilder() to construct.
     private PassphraseRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -4050,6 +4294,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -4061,16 +4308,16 @@ public final class MessagesCommon {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
               bitField0_ |= 0x00000001;
               onDevice_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -4090,6 +4337,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseRequest_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseRequest_fieldAccessorTable
@@ -4122,6 +4370,7 @@ public final class MessagesCommon {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -4131,6 +4380,7 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4139,6 +4389,7 @@ public final class MessagesCommon {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -4153,7 +4404,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -4180,7 +4430,7 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasOnDevice()) {
         hash = (37 * hash) + ON_DEVICE_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
@@ -4191,6 +4441,17 @@ public final class MessagesCommon {
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.PassphraseRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.PassphraseRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.PassphraseRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4250,6 +4511,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -4257,6 +4519,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.PassphraseRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -4287,6 +4550,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseRequest_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseRequest_fieldAccessorTable
@@ -4309,6 +4573,7 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         onDevice_ = false;
@@ -4316,15 +4581,18 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseRequest_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseRequest getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.PassphraseRequest.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseRequest build() {
         hw.trezor.messages.common.MessagesCommon.PassphraseRequest result = buildPartial();
         if (!result.isInitialized()) {
@@ -4333,6 +4601,7 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseRequest buildPartial() {
         hw.trezor.messages.common.MessagesCommon.PassphraseRequest result = new hw.trezor.messages.common.MessagesCommon.PassphraseRequest(this);
         int from_bitField0_ = bitField0_;
@@ -4346,32 +4615,39 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.PassphraseRequest) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.PassphraseRequest)other);
@@ -4391,10 +4667,12 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4461,11 +4739,13 @@ public final class MessagesCommon {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -4487,11 +4767,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<PassphraseRequest>
         PARSER = new com.google.protobuf.AbstractParser<PassphraseRequest>() {
+      @java.lang.Override
       public PassphraseRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PassphraseRequest(input, extensionRegistry);
+        return new PassphraseRequest(input, extensionRegistry);
       }
     };
 
@@ -4504,6 +4785,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.PassphraseRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -4558,6 +4840,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PassphraseAck)
       PassphraseAckOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use PassphraseAck.newBuilder() to construct.
     private PassphraseAck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -4577,6 +4860,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -4588,13 +4874,6 @@ public final class MessagesCommon {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
@@ -4604,6 +4883,13 @@ public final class MessagesCommon {
             case 18: {
               bitField0_ |= 0x00000002;
               state_ = input.readBytes();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -4623,6 +4909,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseAck_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseAck_fieldAccessorTable
@@ -4697,6 +4984,7 @@ public final class MessagesCommon {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -4706,6 +4994,7 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4717,6 +5006,7 @@ public final class MessagesCommon {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -4734,7 +5024,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -4766,7 +5055,7 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasPassphrase()) {
         hash = (37 * hash) + PASSPHRASE_FIELD_NUMBER;
         hash = (53 * hash) + getPassphrase().hashCode();
@@ -4780,6 +5069,17 @@ public final class MessagesCommon {
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.PassphraseAck parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.PassphraseAck parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.PassphraseAck parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4839,6 +5139,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -4846,6 +5147,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.PassphraseAck prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -4875,6 +5177,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseAck_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseAck_fieldAccessorTable
@@ -4897,6 +5200,7 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         passphrase_ = "";
@@ -4906,15 +5210,18 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseAck_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseAck getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.PassphraseAck.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseAck build() {
         hw.trezor.messages.common.MessagesCommon.PassphraseAck result = buildPartial();
         if (!result.isInitialized()) {
@@ -4923,6 +5230,7 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseAck buildPartial() {
         hw.trezor.messages.common.MessagesCommon.PassphraseAck result = new hw.trezor.messages.common.MessagesCommon.PassphraseAck(this);
         int from_bitField0_ = bitField0_;
@@ -4940,32 +5248,39 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.PassphraseAck) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.PassphraseAck)other);
@@ -4990,10 +5305,12 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5139,11 +5456,13 @@ public final class MessagesCommon {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -5165,11 +5484,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<PassphraseAck>
         PARSER = new com.google.protobuf.AbstractParser<PassphraseAck>() {
+      @java.lang.Override
       public PassphraseAck parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PassphraseAck(input, extensionRegistry);
+        return new PassphraseAck(input, extensionRegistry);
       }
     };
 
@@ -5182,6 +5502,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.PassphraseAck getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -5222,6 +5543,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PassphraseStateRequest)
       PassphraseStateRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use PassphraseStateRequest.newBuilder() to construct.
     private PassphraseStateRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -5240,6 +5562,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -5251,16 +5576,16 @@ public final class MessagesCommon {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               bitField0_ |= 0x00000001;
               state_ = input.readBytes();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -5280,6 +5605,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseStateRequest_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseStateRequest_fieldAccessorTable
@@ -5312,6 +5638,7 @@ public final class MessagesCommon {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -5321,6 +5648,7 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -5329,6 +5657,7 @@ public final class MessagesCommon {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -5343,7 +5672,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -5370,7 +5698,7 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasState()) {
         hash = (37 * hash) + STATE_FIELD_NUMBER;
         hash = (53 * hash) + getState().hashCode();
@@ -5380,6 +5708,17 @@ public final class MessagesCommon {
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5439,6 +5778,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -5446,6 +5786,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -5475,6 +5816,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseStateRequest_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseStateRequest_fieldAccessorTable
@@ -5497,6 +5839,7 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         state_ = com.google.protobuf.ByteString.EMPTY;
@@ -5504,15 +5847,18 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseStateRequest_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest build() {
         hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest result = buildPartial();
         if (!result.isInitialized()) {
@@ -5521,6 +5867,7 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest buildPartial() {
         hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest result = new hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest(this);
         int from_bitField0_ = bitField0_;
@@ -5534,32 +5881,39 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest)other);
@@ -5579,10 +5933,12 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5652,11 +6008,13 @@ public final class MessagesCommon {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -5678,11 +6036,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<PassphraseStateRequest>
         PARSER = new com.google.protobuf.AbstractParser<PassphraseStateRequest>() {
+      @java.lang.Override
       public PassphraseStateRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PassphraseStateRequest(input, extensionRegistry);
+        return new PassphraseStateRequest(input, extensionRegistry);
       }
     };
 
@@ -5695,6 +6054,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.PassphraseStateRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -5718,6 +6078,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PassphraseStateAck)
       PassphraseStateAckOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use PassphraseStateAck.newBuilder() to construct.
     private PassphraseStateAck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -5735,6 +6096,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -5746,8 +6110,8 @@ public final class MessagesCommon {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -5769,6 +6133,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseStateAck_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseStateAck_fieldAccessorTable
@@ -5777,6 +6142,7 @@ public final class MessagesCommon {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -5786,11 +6152,13 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -5801,7 +6169,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -5823,12 +6190,23 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.PassphraseStateAck parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.PassphraseStateAck parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.PassphraseStateAck parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5888,6 +6266,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -5895,6 +6274,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.PassphraseStateAck prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -5924,6 +6304,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseStateAck_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseStateAck_fieldAccessorTable
@@ -5946,20 +6327,24 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_PassphraseStateAck_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseStateAck getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.PassphraseStateAck.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseStateAck build() {
         hw.trezor.messages.common.MessagesCommon.PassphraseStateAck result = buildPartial();
         if (!result.isInitialized()) {
@@ -5968,38 +6353,46 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.PassphraseStateAck buildPartial() {
         hw.trezor.messages.common.MessagesCommon.PassphraseStateAck result = new hw.trezor.messages.common.MessagesCommon.PassphraseStateAck(this);
         onBuilt();
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.PassphraseStateAck) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.PassphraseStateAck)other);
@@ -6016,10 +6409,12 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6037,11 +6432,13 @@ public final class MessagesCommon {
         }
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -6063,11 +6460,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<PassphraseStateAck>
         PARSER = new com.google.protobuf.AbstractParser<PassphraseStateAck>() {
+      @java.lang.Override
       public PassphraseStateAck parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PassphraseStateAck(input, extensionRegistry);
+        return new PassphraseStateAck(input, extensionRegistry);
       }
     };
 
@@ -6080,6 +6478,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.PassphraseStateAck getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -6158,6 +6557,7 @@ public final class MessagesCommon {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.HDNodeType)
       HDNodeTypeOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use HDNodeType.newBuilder() to construct.
     private HDNodeType(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -6181,6 +6581,9 @@ public final class MessagesCommon {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -6192,13 +6595,6 @@ public final class MessagesCommon {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
               bitField0_ |= 0x00000001;
               depth_ = input.readUInt32();
@@ -6229,6 +6625,13 @@ public final class MessagesCommon {
               publicKey_ = input.readBytes();
               break;
             }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -6246,6 +6649,7 @@ public final class MessagesCommon {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_HDNodeType_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_HDNodeType_fieldAccessorTable
@@ -6345,6 +6749,7 @@ public final class MessagesCommon {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -6370,6 +6775,7 @@ public final class MessagesCommon {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -6393,6 +6799,7 @@ public final class MessagesCommon {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -6427,7 +6834,6 @@ public final class MessagesCommon {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -6479,7 +6885,7 @@ public final class MessagesCommon {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (hasDepth()) {
         hash = (37 * hash) + DEPTH_FIELD_NUMBER;
         hash = (53 * hash) + getDepth();
@@ -6509,6 +6915,17 @@ public final class MessagesCommon {
       return hash;
     }
 
+    public static hw.trezor.messages.common.MessagesCommon.HDNodeType parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static hw.trezor.messages.common.MessagesCommon.HDNodeType parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static hw.trezor.messages.common.MessagesCommon.HDNodeType parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6568,6 +6985,7 @@ public final class MessagesCommon {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -6575,6 +6993,7 @@ public final class MessagesCommon {
     public static Builder newBuilder(hw.trezor.messages.common.MessagesCommon.HDNodeType prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -6605,6 +7024,7 @@ public final class MessagesCommon {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_HDNodeType_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_HDNodeType_fieldAccessorTable
@@ -6627,6 +7047,7 @@ public final class MessagesCommon {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         depth_ = 0;
@@ -6644,15 +7065,18 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return hw.trezor.messages.common.MessagesCommon.internal_static_hw_trezor_messages_common_HDNodeType_descriptor;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.HDNodeType getDefaultInstanceForType() {
         return hw.trezor.messages.common.MessagesCommon.HDNodeType.getDefaultInstance();
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.HDNodeType build() {
         hw.trezor.messages.common.MessagesCommon.HDNodeType result = buildPartial();
         if (!result.isInitialized()) {
@@ -6661,6 +7085,7 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public hw.trezor.messages.common.MessagesCommon.HDNodeType buildPartial() {
         hw.trezor.messages.common.MessagesCommon.HDNodeType result = new hw.trezor.messages.common.MessagesCommon.HDNodeType(this);
         int from_bitField0_ = bitField0_;
@@ -6694,32 +7119,39 @@ public final class MessagesCommon {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof hw.trezor.messages.common.MessagesCommon.HDNodeType) {
           return mergeFrom((hw.trezor.messages.common.MessagesCommon.HDNodeType)other);
@@ -6754,6 +7186,7 @@ public final class MessagesCommon {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         if (!hasDepth()) {
           return false;
@@ -6770,6 +7203,7 @@ public final class MessagesCommon {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6989,11 +7423,13 @@ public final class MessagesCommon {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -7015,11 +7451,12 @@ public final class MessagesCommon {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<HDNodeType>
         PARSER = new com.google.protobuf.AbstractParser<HDNodeType>() {
+      @java.lang.Override
       public HDNodeType parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new HDNodeType(input, extensionRegistry);
+        return new HDNodeType(input, extensionRegistry);
       }
     };
 
@@ -7032,6 +7469,7 @@ public final class MessagesCommon {
       return PARSER;
     }
 
+    @java.lang.Override
     public hw.trezor.messages.common.MessagesCommon.HDNodeType getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -7111,7 +7549,7 @@ public final class MessagesCommon {
       "ed\020\002\022\025\n\021Failure_DataError\020\003\022\033\n\027Failure_A" +
       "ctionCancelled\020\004\022\027\n\023Failure_PinExpected\020" +
       "\005\022\030\n\024Failure_PinCancelled\020\006\022\026\n\022Failure_P" +
-      "inInvalid\020\007\022\034\n\030Failure_InvalidSignature\020",
+      "inInvalid\020\007\022\034\n\030Failure_InvalidSignature\020" +
       "\010\022\030\n\024Failure_ProcessError\020\t\022\032\n\026Failure_N" +
       "otEnoughFunds\020\n\022\032\n\026Failure_NotInitialize" +
       "d\020\013\022\027\n\023Failure_PinMismatch\020\014\022\031\n\025Failure_" +
@@ -7121,7 +7559,7 @@ public final class MessagesCommon {
       "\t\"\360\003\n\021ButtonRequestType\022\027\n\023ButtonRequest" +
       "_Other\020\001\022\"\n\036ButtonRequest_FeeOverThresho" +
       "ld\020\002\022\037\n\033ButtonRequest_ConfirmOutput\020\003\022\035\n" +
-      "\031ButtonRequest_ResetDevice\020\004\022\035\n\031ButtonRe",
+      "\031ButtonRequest_ResetDevice\020\004\022\035\n\031ButtonRe" +
       "quest_ConfirmWord\020\005\022\034\n\030ButtonRequest_Wip" +
       "eDevice\020\006\022\035\n\031ButtonRequest_ProtectCall\020\007" +
       "\022\030\n\024ButtonRequest_SignTx\020\010\022\037\n\033ButtonRequ" +
@@ -7131,7 +7569,7 @@ public final class MessagesCommon {
       "onRequest_MnemonicInput\020\r\022 \n\034ButtonReque" +
       "st_PassphraseType\020\016\022\'\n#ButtonRequest_Unk" +
       "nownDerivationPath\020\017\"\013\n\tButtonAck\"\343\001\n\020Pi" +
-      "nMatrixRequest\022N\n\004type\030\001 \001(\0162@.hw.trezor",
+      "nMatrixRequest\022N\n\004type\030\001 \001(\0162@.hw.trezor" +
       ".messages.common.PinMatrixRequest.PinMat" +
       "rixRequestType\"\177\n\024PinMatrixRequestType\022 " +
       "\n\034PinMatrixRequestType_Current\020\001\022!\n\035PinM" +
@@ -7141,7 +7579,7 @@ public final class MessagesCommon {
       "device\030\001 \001(\010\"2\n\rPassphraseAck\022\022\n\npassphr" +
       "ase\030\001 \001(\t\022\r\n\005state\030\002 \001(\014\"\'\n\026PassphraseSt" +
       "ateRequest\022\r\n\005state\030\001 \001(\014\"\024\n\022PassphraseS" +
-      "tateAck\"\200\001\n\nHDNodeType\022\r\n\005depth\030\001 \002(\r\022\023\n",
+      "tateAck\"\200\001\n\nHDNodeType\022\r\n\005depth\030\001 \002(\r\022\023\n" +
       "\013fingerprint\030\002 \002(\r\022\021\n\tchild_num\030\003 \002(\r\022\022\n" +
       "\nchain_code\030\004 \002(\014\022\023\n\013private_key\030\005 \001(\014\022\022" +
       "\n\npublic_key\030\006 \001(\014"
