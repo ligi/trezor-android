@@ -13,6 +13,7 @@ import android.hardware.usb.UsbManager;
 import android.hardware.usb.UsbRequest;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import com.satoshilabs.trezor.lib.protobuf.TrezorMessage;
 import com.satoshilabs.trezor.lib.protobuf.TrezorMessage.MessageType;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
@@ -85,13 +86,7 @@ public class TrezorManager {
 
     public static Message parseMessageFromBytes(MessageType type, byte[] data) throws InvalidProtocolBufferException {
         try {
-            String className;
-
-            if (type.name().contains("Ethereum")) {
-                className = com.satoshilabs.trezor.lib.protobuf.TrezorMessageEthereum.class.getName();
-            } else {
-                className = com.satoshilabs.trezor.lib.protobuf.TrezorMessageManagement.class.getName();
-            }
+            String className= TrezorMessage.class.getName();
 
             className += "$" + type.name().replace("MessageType_", "");
             Class cls = Class.forName(className);
