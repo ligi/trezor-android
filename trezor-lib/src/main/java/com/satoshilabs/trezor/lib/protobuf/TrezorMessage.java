@@ -30294,29 +30294,46 @@ public final class TrezorMessage {
 
     /**
      * <pre>
-     * Ethereum address as string
+     * Ethereum address as 20 bytes (legacy firmwares)
      * </pre>
      *
-     * <code>optional string address = 2;</code>
+     * <code>optional bytes addressBin = 1;</code>
      */
-    boolean hasAddress();
+    boolean hasAddressBin();
     /**
      * <pre>
-     * Ethereum address as string
+     * Ethereum address as 20 bytes (legacy firmwares)
      * </pre>
      *
-     * <code>optional string address = 2;</code>
+     * <code>optional bytes addressBin = 1;</code>
      */
-    java.lang.String getAddress();
+    com.google.protobuf.ByteString getAddressBin();
+
     /**
      * <pre>
-     * Ethereum address as string
+     * Ethereum address as hex string (newer firmwares)
      * </pre>
      *
-     * <code>optional string address = 2;</code>
+     * <code>optional string addressHex = 2;</code>
+     */
+    boolean hasAddressHex();
+    /**
+     * <pre>
+     * Ethereum address as hex string (newer firmwares)
+     * </pre>
+     *
+     * <code>optional string addressHex = 2;</code>
+     */
+    java.lang.String getAddressHex();
+    /**
+     * <pre>
+     * Ethereum address as hex string (newer firmwares)
+     * </pre>
+     *
+     * <code>optional string addressHex = 2;</code>
      */
     com.google.protobuf.ByteString
-        getAddressBytes();
+        getAddressHexBytes();
   }
   /**
    * <pre>
@@ -30337,7 +30354,8 @@ public final class TrezorMessage {
       super(builder);
     }
     private EthereumAddress() {
-      address_ = "";
+      addressBin_ = com.google.protobuf.ByteString.EMPTY;
+      addressHex_ = "";
     }
 
     @java.lang.Override
@@ -30364,10 +30382,15 @@ public final class TrezorMessage {
             case 0:
               done = true;
               break;
+            case 10: {
+              bitField0_ |= 0x00000001;
+              addressBin_ = input.readBytes();
+              break;
+            }
             case 18: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              address_ = bs;
+              bitField0_ |= 0x00000002;
+              addressHex_ = bs;
               break;
             }
             default: {
@@ -30403,27 +30426,50 @@ public final class TrezorMessage {
     }
 
     private int bitField0_;
-    public static final int ADDRESS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object address_;
+    public static final int ADDRESSBIN_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString addressBin_;
     /**
      * <pre>
-     * Ethereum address as string
+     * Ethereum address as 20 bytes (legacy firmwares)
      * </pre>
      *
-     * <code>optional string address = 2;</code>
+     * <code>optional bytes addressBin = 1;</code>
      */
-    public boolean hasAddress() {
+    public boolean hasAddressBin() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <pre>
-     * Ethereum address as string
+     * Ethereum address as 20 bytes (legacy firmwares)
      * </pre>
      *
-     * <code>optional string address = 2;</code>
+     * <code>optional bytes addressBin = 1;</code>
      */
-    public java.lang.String getAddress() {
-      java.lang.Object ref = address_;
+    public com.google.protobuf.ByteString getAddressBin() {
+      return addressBin_;
+    }
+
+    public static final int ADDRESSHEX_FIELD_NUMBER = 2;
+    private volatile java.lang.Object addressHex_;
+    /**
+     * <pre>
+     * Ethereum address as hex string (newer firmwares)
+     * </pre>
+     *
+     * <code>optional string addressHex = 2;</code>
+     */
+    public boolean hasAddressHex() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <pre>
+     * Ethereum address as hex string (newer firmwares)
+     * </pre>
+     *
+     * <code>optional string addressHex = 2;</code>
+     */
+    public java.lang.String getAddressHex() {
+      java.lang.Object ref = addressHex_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -30431,26 +30477,26 @@ public final class TrezorMessage {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          address_ = s;
+          addressHex_ = s;
         }
         return s;
       }
     }
     /**
      * <pre>
-     * Ethereum address as string
+     * Ethereum address as hex string (newer firmwares)
      * </pre>
      *
-     * <code>optional string address = 2;</code>
+     * <code>optional string addressHex = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getAddressBytes() {
-      java.lang.Object ref = address_;
+        getAddressHexBytes() {
+      java.lang.Object ref = addressHex_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        address_ = b;
+        addressHex_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -30472,7 +30518,10 @@ public final class TrezorMessage {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, address_);
+        output.writeBytes(1, addressBin_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, addressHex_);
       }
       unknownFields.writeTo(output);
     }
@@ -30484,7 +30533,11 @@ public final class TrezorMessage {
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, address_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, addressBin_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, addressHex_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -30502,10 +30555,15 @@ public final class TrezorMessage {
       com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumAddress other = (com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumAddress) obj;
 
       boolean result = true;
-      result = result && (hasAddress() == other.hasAddress());
-      if (hasAddress()) {
-        result = result && getAddress()
-            .equals(other.getAddress());
+      result = result && (hasAddressBin() == other.hasAddressBin());
+      if (hasAddressBin()) {
+        result = result && getAddressBin()
+            .equals(other.getAddressBin());
+      }
+      result = result && (hasAddressHex() == other.hasAddressHex());
+      if (hasAddressHex()) {
+        result = result && getAddressHex()
+            .equals(other.getAddressHex());
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -30518,9 +30576,13 @@ public final class TrezorMessage {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasAddress()) {
-        hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-        hash = (53 * hash) + getAddress().hashCode();
+      if (hasAddressBin()) {
+        hash = (37 * hash) + ADDRESSBIN_FIELD_NUMBER;
+        hash = (53 * hash) + getAddressBin().hashCode();
+      }
+      if (hasAddressHex()) {
+        hash = (37 * hash) + ADDRESSHEX_FIELD_NUMBER;
+        hash = (53 * hash) + getAddressHex().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -30661,8 +30723,10 @@ public final class TrezorMessage {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        address_ = "";
+        addressBin_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
+        addressHex_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -30694,7 +30758,11 @@ public final class TrezorMessage {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.address_ = address_;
+        result.addressBin_ = addressBin_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.addressHex_ = addressHex_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -30744,9 +30812,12 @@ public final class TrezorMessage {
 
       public Builder mergeFrom(com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumAddress other) {
         if (other == com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumAddress.getDefaultInstance()) return this;
-        if (other.hasAddress()) {
-          bitField0_ |= 0x00000001;
-          address_ = other.address_;
+        if (other.hasAddressBin()) {
+          setAddressBin(other.getAddressBin());
+        }
+        if (other.hasAddressHex()) {
+          bitField0_ |= 0x00000002;
+          addressHex_ = other.addressHex_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -30779,32 +30850,83 @@ public final class TrezorMessage {
       }
       private int bitField0_;
 
-      private java.lang.Object address_ = "";
+      private com.google.protobuf.ByteString addressBin_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * Ethereum address as string
+       * Ethereum address as 20 bytes (legacy firmwares)
        * </pre>
        *
-       * <code>optional string address = 2;</code>
+       * <code>optional bytes addressBin = 1;</code>
        */
-      public boolean hasAddress() {
+      public boolean hasAddressBin() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <pre>
-       * Ethereum address as string
+       * Ethereum address as 20 bytes (legacy firmwares)
        * </pre>
        *
-       * <code>optional string address = 2;</code>
+       * <code>optional bytes addressBin = 1;</code>
        */
-      public java.lang.String getAddress() {
-        java.lang.Object ref = address_;
+      public com.google.protobuf.ByteString getAddressBin() {
+        return addressBin_;
+      }
+      /**
+       * <pre>
+       * Ethereum address as 20 bytes (legacy firmwares)
+       * </pre>
+       *
+       * <code>optional bytes addressBin = 1;</code>
+       */
+      public Builder setAddressBin(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        addressBin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Ethereum address as 20 bytes (legacy firmwares)
+       * </pre>
+       *
+       * <code>optional bytes addressBin = 1;</code>
+       */
+      public Builder clearAddressBin() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        addressBin_ = getDefaultInstance().getAddressBin();
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object addressHex_ = "";
+      /**
+       * <pre>
+       * Ethereum address as hex string (newer firmwares)
+       * </pre>
+       *
+       * <code>optional string addressHex = 2;</code>
+       */
+      public boolean hasAddressHex() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <pre>
+       * Ethereum address as hex string (newer firmwares)
+       * </pre>
+       *
+       * <code>optional string addressHex = 2;</code>
+       */
+      public java.lang.String getAddressHex() {
+        java.lang.Object ref = addressHex_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            address_ = s;
+            addressHex_ = s;
           }
           return s;
         } else {
@@ -30813,19 +30935,19 @@ public final class TrezorMessage {
       }
       /**
        * <pre>
-       * Ethereum address as string
+       * Ethereum address as hex string (newer firmwares)
        * </pre>
        *
-       * <code>optional string address = 2;</code>
+       * <code>optional string addressHex = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getAddressBytes() {
-        java.lang.Object ref = address_;
+          getAddressHexBytes() {
+        java.lang.Object ref = addressHex_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          address_ = b;
+          addressHex_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -30833,48 +30955,48 @@ public final class TrezorMessage {
       }
       /**
        * <pre>
-       * Ethereum address as string
+       * Ethereum address as hex string (newer firmwares)
        * </pre>
        *
-       * <code>optional string address = 2;</code>
+       * <code>optional string addressHex = 2;</code>
        */
-      public Builder setAddress(
+      public Builder setAddressHex(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-        address_ = value;
+  bitField0_ |= 0x00000002;
+        addressHex_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * Ethereum address as string
+       * Ethereum address as hex string (newer firmwares)
        * </pre>
        *
-       * <code>optional string address = 2;</code>
+       * <code>optional string addressHex = 2;</code>
        */
-      public Builder clearAddress() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        address_ = getDefaultInstance().getAddress();
+      public Builder clearAddressHex() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        addressHex_ = getDefaultInstance().getAddressHex();
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * Ethereum address as string
+       * Ethereum address as hex string (newer firmwares)
        * </pre>
        *
-       * <code>optional string address = 2;</code>
+       * <code>optional string addressHex = 2;</code>
        */
-      public Builder setAddressBytes(
+      public Builder setAddressHexBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-        address_ = value;
+  bitField0_ |= 0x00000002;
+        addressHex_ = value;
         onChanged();
         return this;
       }
@@ -31013,29 +31135,46 @@ public final class TrezorMessage {
 
     /**
      * <pre>
-     * recipient address
+     * recipient address (20 bytes, legacy firmware)
      * </pre>
      *
-     * <code>optional string to = 11;</code>
+     * <code>optional bytes toBin = 5;</code>
      */
-    boolean hasTo();
+    boolean hasToBin();
     /**
      * <pre>
-     * recipient address
+     * recipient address (20 bytes, legacy firmware)
      * </pre>
      *
-     * <code>optional string to = 11;</code>
+     * <code>optional bytes toBin = 5;</code>
      */
-    java.lang.String getTo();
+    com.google.protobuf.ByteString getToBin();
+
     /**
      * <pre>
-     * recipient address
+     * recipient address (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string to = 11;</code>
+     * <code>optional string toHex = 11;</code>
+     */
+    boolean hasToHex();
+    /**
+     * <pre>
+     * recipient address (hex string, newer firmware)
+     * </pre>
+     *
+     * <code>optional string toHex = 11;</code>
+     */
+    java.lang.String getToHex();
+    /**
+     * <pre>
+     * recipient address (hex string, newer firmware)
+     * </pre>
+     *
+     * <code>optional string toHex = 11;</code>
      */
     com.google.protobuf.ByteString
-        getToBytes();
+        getToHexBytes();
 
     /**
      * <pre>
@@ -31149,7 +31288,8 @@ public final class TrezorMessage {
       nonce_ = com.google.protobuf.ByteString.EMPTY;
       gasPrice_ = com.google.protobuf.ByteString.EMPTY;
       gasLimit_ = com.google.protobuf.ByteString.EMPTY;
-      to_ = "";
+      toBin_ = com.google.protobuf.ByteString.EMPTY;
+      toHex_ = "";
       value_ = com.google.protobuf.ByteString.EMPTY;
       dataInitialChunk_ = com.google.protobuf.ByteString.EMPTY;
       dataLength_ = 0;
@@ -31217,35 +31357,40 @@ public final class TrezorMessage {
               gasLimit_ = input.readBytes();
               break;
             }
+            case 42: {
+              bitField0_ |= 0x00000008;
+              toBin_ = input.readBytes();
+              break;
+            }
             case 50: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               value_ = input.readBytes();
               break;
             }
             case 58: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               dataInitialChunk_ = input.readBytes();
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               dataLength_ = input.readUInt32();
               break;
             }
             case 72: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               chainId_ = input.readUInt32();
               break;
             }
             case 80: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000200;
               txType_ = input.readUInt32();
               break;
             }
             case 90: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000008;
-              to_ = bs;
+              bitField0_ |= 0x00000010;
+              toHex_ = bs;
               break;
             }
             default: {
@@ -31387,27 +31532,50 @@ public final class TrezorMessage {
       return gasLimit_;
     }
 
-    public static final int TO_FIELD_NUMBER = 11;
-    private volatile java.lang.Object to_;
+    public static final int TOBIN_FIELD_NUMBER = 5;
+    private com.google.protobuf.ByteString toBin_;
     /**
      * <pre>
-     * recipient address
+     * recipient address (20 bytes, legacy firmware)
      * </pre>
      *
-     * <code>optional string to = 11;</code>
+     * <code>optional bytes toBin = 5;</code>
      */
-    public boolean hasTo() {
+    public boolean hasToBin() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <pre>
-     * recipient address
+     * recipient address (20 bytes, legacy firmware)
      * </pre>
      *
-     * <code>optional string to = 11;</code>
+     * <code>optional bytes toBin = 5;</code>
      */
-    public java.lang.String getTo() {
-      java.lang.Object ref = to_;
+    public com.google.protobuf.ByteString getToBin() {
+      return toBin_;
+    }
+
+    public static final int TOHEX_FIELD_NUMBER = 11;
+    private volatile java.lang.Object toHex_;
+    /**
+     * <pre>
+     * recipient address (hex string, newer firmware)
+     * </pre>
+     *
+     * <code>optional string toHex = 11;</code>
+     */
+    public boolean hasToHex() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <pre>
+     * recipient address (hex string, newer firmware)
+     * </pre>
+     *
+     * <code>optional string toHex = 11;</code>
+     */
+    public java.lang.String getToHex() {
+      java.lang.Object ref = toHex_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -31415,26 +31583,26 @@ public final class TrezorMessage {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          to_ = s;
+          toHex_ = s;
         }
         return s;
       }
     }
     /**
      * <pre>
-     * recipient address
+     * recipient address (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string to = 11;</code>
+     * <code>optional string toHex = 11;</code>
      */
     public com.google.protobuf.ByteString
-        getToBytes() {
-      java.lang.Object ref = to_;
+        getToHexBytes() {
+      java.lang.Object ref = toHex_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        to_ = b;
+        toHex_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -31451,7 +31619,7 @@ public final class TrezorMessage {
      * <code>optional bytes value = 6;</code>
      */
     public boolean hasValue() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <pre>
@@ -31474,7 +31642,7 @@ public final class TrezorMessage {
      * <code>optional bytes data_initial_chunk = 7;</code>
      */
     public boolean hasDataInitialChunk() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <pre>
@@ -31497,7 +31665,7 @@ public final class TrezorMessage {
      * <code>optional uint32 data_length = 8;</code>
      */
     public boolean hasDataLength() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <pre>
@@ -31520,7 +31688,7 @@ public final class TrezorMessage {
      * <code>optional uint32 chain_id = 9;</code>
      */
     public boolean hasChainId() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <pre>
@@ -31543,7 +31711,7 @@ public final class TrezorMessage {
      * <code>optional uint32 tx_type = 10;</code>
      */
     public boolean hasTxType() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <pre>
@@ -31582,23 +31750,26 @@ public final class TrezorMessage {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(4, gasLimit_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(6, value_);
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(5, toBin_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeBytes(7, dataInitialChunk_);
+        output.writeBytes(6, value_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeUInt32(8, dataLength_);
+        output.writeBytes(7, dataInitialChunk_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeUInt32(9, chainId_);
+        output.writeUInt32(8, dataLength_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeUInt32(9, chainId_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeUInt32(10, txType_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, to_);
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, toHex_);
       }
       unknownFields.writeTo(output);
     }
@@ -31630,28 +31801,32 @@ public final class TrezorMessage {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, gasLimit_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, value_);
+          .computeBytesSize(5, toBin_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, dataInitialChunk_);
+          .computeBytesSize(6, value_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(8, dataLength_);
+          .computeBytesSize(7, dataInitialChunk_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(9, chainId_);
+          .computeUInt32Size(8, dataLength_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(9, chainId_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(10, txType_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, to_);
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, toHex_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -31686,10 +31861,15 @@ public final class TrezorMessage {
         result = result && getGasLimit()
             .equals(other.getGasLimit());
       }
-      result = result && (hasTo() == other.hasTo());
-      if (hasTo()) {
-        result = result && getTo()
-            .equals(other.getTo());
+      result = result && (hasToBin() == other.hasToBin());
+      if (hasToBin()) {
+        result = result && getToBin()
+            .equals(other.getToBin());
+      }
+      result = result && (hasToHex() == other.hasToHex());
+      if (hasToHex()) {
+        result = result && getToHex()
+            .equals(other.getToHex());
       }
       result = result && (hasValue() == other.hasValue());
       if (hasValue()) {
@@ -31743,9 +31923,13 @@ public final class TrezorMessage {
         hash = (37 * hash) + GAS_LIMIT_FIELD_NUMBER;
         hash = (53 * hash) + getGasLimit().hashCode();
       }
-      if (hasTo()) {
-        hash = (37 * hash) + TO_FIELD_NUMBER;
-        hash = (53 * hash) + getTo().hashCode();
+      if (hasToBin()) {
+        hash = (37 * hash) + TOBIN_FIELD_NUMBER;
+        hash = (53 * hash) + getToBin().hashCode();
+      }
+      if (hasToHex()) {
+        hash = (37 * hash) + TOHEX_FIELD_NUMBER;
+        hash = (53 * hash) + getToHex().hashCode();
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
@@ -31918,18 +32102,20 @@ public final class TrezorMessage {
         bitField0_ = (bitField0_ & ~0x00000004);
         gasLimit_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000008);
-        to_ = "";
+        toBin_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000010);
-        value_ = com.google.protobuf.ByteString.EMPTY;
+        toHex_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
-        dataInitialChunk_ = com.google.protobuf.ByteString.EMPTY;
+        value_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000040);
-        dataLength_ = 0;
+        dataInitialChunk_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000080);
-        chainId_ = 0;
+        dataLength_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
-        txType_ = 0;
+        chainId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
+        txType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -31978,25 +32164,29 @@ public final class TrezorMessage {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.to_ = to_;
+        result.toBin_ = toBin_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.value_ = value_;
+        result.toHex_ = toHex_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.dataInitialChunk_ = dataInitialChunk_;
+        result.value_ = value_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.dataLength_ = dataLength_;
+        result.dataInitialChunk_ = dataInitialChunk_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.chainId_ = chainId_;
+        result.dataLength_ = dataLength_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000100;
+        }
+        result.chainId_ = chainId_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000200;
         }
         result.txType_ = txType_;
         result.bitField0_ = to_bitField0_;
@@ -32067,9 +32257,12 @@ public final class TrezorMessage {
         if (other.hasGasLimit()) {
           setGasLimit(other.getGasLimit());
         }
-        if (other.hasTo()) {
-          bitField0_ |= 0x00000010;
-          to_ = other.to_;
+        if (other.hasToBin()) {
+          setToBin(other.getToBin());
+        }
+        if (other.hasToHex()) {
+          bitField0_ |= 0x00000020;
+          toHex_ = other.toHex_;
           onChanged();
         }
         if (other.hasValue()) {
@@ -32364,32 +32557,83 @@ public final class TrezorMessage {
         return this;
       }
 
-      private java.lang.Object to_ = "";
+      private com.google.protobuf.ByteString toBin_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * recipient address
+       * recipient address (20 bytes, legacy firmware)
        * </pre>
        *
-       * <code>optional string to = 11;</code>
+       * <code>optional bytes toBin = 5;</code>
        */
-      public boolean hasTo() {
+      public boolean hasToBin() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <pre>
-       * recipient address
+       * recipient address (20 bytes, legacy firmware)
        * </pre>
        *
-       * <code>optional string to = 11;</code>
+       * <code>optional bytes toBin = 5;</code>
        */
-      public java.lang.String getTo() {
-        java.lang.Object ref = to_;
+      public com.google.protobuf.ByteString getToBin() {
+        return toBin_;
+      }
+      /**
+       * <pre>
+       * recipient address (20 bytes, legacy firmware)
+       * </pre>
+       *
+       * <code>optional bytes toBin = 5;</code>
+       */
+      public Builder setToBin(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        toBin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * recipient address (20 bytes, legacy firmware)
+       * </pre>
+       *
+       * <code>optional bytes toBin = 5;</code>
+       */
+      public Builder clearToBin() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        toBin_ = getDefaultInstance().getToBin();
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object toHex_ = "";
+      /**
+       * <pre>
+       * recipient address (hex string, newer firmware)
+       * </pre>
+       *
+       * <code>optional string toHex = 11;</code>
+       */
+      public boolean hasToHex() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <pre>
+       * recipient address (hex string, newer firmware)
+       * </pre>
+       *
+       * <code>optional string toHex = 11;</code>
+       */
+      public java.lang.String getToHex() {
+        java.lang.Object ref = toHex_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            to_ = s;
+            toHex_ = s;
           }
           return s;
         } else {
@@ -32398,19 +32642,19 @@ public final class TrezorMessage {
       }
       /**
        * <pre>
-       * recipient address
+       * recipient address (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string to = 11;</code>
+       * <code>optional string toHex = 11;</code>
        */
       public com.google.protobuf.ByteString
-          getToBytes() {
-        java.lang.Object ref = to_;
+          getToHexBytes() {
+        java.lang.Object ref = toHex_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          to_ = b;
+          toHex_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -32418,48 +32662,48 @@ public final class TrezorMessage {
       }
       /**
        * <pre>
-       * recipient address
+       * recipient address (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string to = 11;</code>
+       * <code>optional string toHex = 11;</code>
        */
-      public Builder setTo(
+      public Builder setToHex(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
-        to_ = value;
+  bitField0_ |= 0x00000020;
+        toHex_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * recipient address
+       * recipient address (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string to = 11;</code>
+       * <code>optional string toHex = 11;</code>
        */
-      public Builder clearTo() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        to_ = getDefaultInstance().getTo();
+      public Builder clearToHex() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        toHex_ = getDefaultInstance().getToHex();
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * recipient address
+       * recipient address (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string to = 11;</code>
+       * <code>optional string toHex = 11;</code>
        */
-      public Builder setToBytes(
+      public Builder setToHexBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
-        to_ = value;
+  bitField0_ |= 0x00000020;
+        toHex_ = value;
         onChanged();
         return this;
       }
@@ -32473,7 +32717,7 @@ public final class TrezorMessage {
        * <code>optional bytes value = 6;</code>
        */
       public boolean hasValue() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <pre>
@@ -32496,7 +32740,7 @@ public final class TrezorMessage {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000040;
         value_ = value;
         onChanged();
         return this;
@@ -32509,7 +32753,7 @@ public final class TrezorMessage {
        * <code>optional bytes value = 6;</code>
        */
       public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         value_ = getDefaultInstance().getValue();
         onChanged();
         return this;
@@ -32524,7 +32768,7 @@ public final class TrezorMessage {
        * <code>optional bytes data_initial_chunk = 7;</code>
        */
       public boolean hasDataInitialChunk() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <pre>
@@ -32547,7 +32791,7 @@ public final class TrezorMessage {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000080;
         dataInitialChunk_ = value;
         onChanged();
         return this;
@@ -32560,7 +32804,7 @@ public final class TrezorMessage {
        * <code>optional bytes data_initial_chunk = 7;</code>
        */
       public Builder clearDataInitialChunk() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         dataInitialChunk_ = getDefaultInstance().getDataInitialChunk();
         onChanged();
         return this;
@@ -32575,7 +32819,7 @@ public final class TrezorMessage {
        * <code>optional uint32 data_length = 8;</code>
        */
       public boolean hasDataLength() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <pre>
@@ -32595,7 +32839,7 @@ public final class TrezorMessage {
        * <code>optional uint32 data_length = 8;</code>
        */
       public Builder setDataLength(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         dataLength_ = value;
         onChanged();
         return this;
@@ -32608,7 +32852,7 @@ public final class TrezorMessage {
        * <code>optional uint32 data_length = 8;</code>
        */
       public Builder clearDataLength() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         dataLength_ = 0;
         onChanged();
         return this;
@@ -32623,7 +32867,7 @@ public final class TrezorMessage {
        * <code>optional uint32 chain_id = 9;</code>
        */
       public boolean hasChainId() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
        * <pre>
@@ -32643,7 +32887,7 @@ public final class TrezorMessage {
        * <code>optional uint32 chain_id = 9;</code>
        */
       public Builder setChainId(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         chainId_ = value;
         onChanged();
         return this;
@@ -32656,7 +32900,7 @@ public final class TrezorMessage {
        * <code>optional uint32 chain_id = 9;</code>
        */
       public Builder clearChainId() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         chainId_ = 0;
         onChanged();
         return this;
@@ -32671,7 +32915,7 @@ public final class TrezorMessage {
        * <code>optional uint32 tx_type = 10;</code>
        */
       public boolean hasTxType() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
        * <pre>
@@ -32691,7 +32935,7 @@ public final class TrezorMessage {
        * <code>optional uint32 tx_type = 10;</code>
        */
       public Builder setTxType(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         txType_ = value;
         onChanged();
         return this;
@@ -32704,7 +32948,7 @@ public final class TrezorMessage {
        * <code>optional uint32 tx_type = 10;</code>
        */
       public Builder clearTxType() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         txType_ = 0;
         onChanged();
         return this;
@@ -35007,6 +35251,23 @@ public final class TrezorMessage {
 
     /**
      * <pre>
+     * address used to sign the message (20 bytes, legacy firmware)
+     * </pre>
+     *
+     * <code>optional bytes addressBin = 1;</code>
+     */
+    boolean hasAddressBin();
+    /**
+     * <pre>
+     * address used to sign the message (20 bytes, legacy firmware)
+     * </pre>
+     *
+     * <code>optional bytes addressBin = 1;</code>
+     */
+    com.google.protobuf.ByteString getAddressBin();
+
+    /**
+     * <pre>
      * signature of the message
      * </pre>
      *
@@ -35024,29 +35285,29 @@ public final class TrezorMessage {
 
     /**
      * <pre>
-     * address used to sign the message
+     * address used to sign the message (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 3;</code>
+     * <code>optional string addressHex = 3;</code>
      */
-    boolean hasAddress();
+    boolean hasAddressHex();
     /**
      * <pre>
-     * address used to sign the message
+     * address used to sign the message (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 3;</code>
+     * <code>optional string addressHex = 3;</code>
      */
-    java.lang.String getAddress();
+    java.lang.String getAddressHex();
     /**
      * <pre>
-     * address used to sign the message
+     * address used to sign the message (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 3;</code>
+     * <code>optional string addressHex = 3;</code>
      */
     com.google.protobuf.ByteString
-        getAddressBytes();
+        getAddressHexBytes();
   }
   /**
    * <pre>
@@ -35067,8 +35328,9 @@ public final class TrezorMessage {
       super(builder);
     }
     private EthereumMessageSignature() {
+      addressBin_ = com.google.protobuf.ByteString.EMPTY;
       signature_ = com.google.protobuf.ByteString.EMPTY;
-      address_ = "";
+      addressHex_ = "";
     }
 
     @java.lang.Override
@@ -35095,15 +35357,20 @@ public final class TrezorMessage {
             case 0:
               done = true;
               break;
-            case 18: {
+            case 10: {
               bitField0_ |= 0x00000001;
+              addressBin_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
               signature_ = input.readBytes();
               break;
             }
             case 26: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              address_ = bs;
+              bitField0_ |= 0x00000004;
+              addressHex_ = bs;
               break;
             }
             default: {
@@ -35139,6 +35406,29 @@ public final class TrezorMessage {
     }
 
     private int bitField0_;
+    public static final int ADDRESSBIN_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString addressBin_;
+    /**
+     * <pre>
+     * address used to sign the message (20 bytes, legacy firmware)
+     * </pre>
+     *
+     * <code>optional bytes addressBin = 1;</code>
+     */
+    public boolean hasAddressBin() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <pre>
+     * address used to sign the message (20 bytes, legacy firmware)
+     * </pre>
+     *
+     * <code>optional bytes addressBin = 1;</code>
+     */
+    public com.google.protobuf.ByteString getAddressBin() {
+      return addressBin_;
+    }
+
     public static final int SIGNATURE_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString signature_;
     /**
@@ -35149,7 +35439,7 @@ public final class TrezorMessage {
      * <code>optional bytes signature = 2;</code>
      */
     public boolean hasSignature() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <pre>
@@ -35162,27 +35452,27 @@ public final class TrezorMessage {
       return signature_;
     }
 
-    public static final int ADDRESS_FIELD_NUMBER = 3;
-    private volatile java.lang.Object address_;
+    public static final int ADDRESSHEX_FIELD_NUMBER = 3;
+    private volatile java.lang.Object addressHex_;
     /**
      * <pre>
-     * address used to sign the message
+     * address used to sign the message (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 3;</code>
+     * <code>optional string addressHex = 3;</code>
      */
-    public boolean hasAddress() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+    public boolean hasAddressHex() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <pre>
-     * address used to sign the message
+     * address used to sign the message (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 3;</code>
+     * <code>optional string addressHex = 3;</code>
      */
-    public java.lang.String getAddress() {
-      java.lang.Object ref = address_;
+    public java.lang.String getAddressHex() {
+      java.lang.Object ref = addressHex_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -35190,26 +35480,26 @@ public final class TrezorMessage {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          address_ = s;
+          addressHex_ = s;
         }
         return s;
       }
     }
     /**
      * <pre>
-     * address used to sign the message
+     * address used to sign the message (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 3;</code>
+     * <code>optional string addressHex = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getAddressBytes() {
-      java.lang.Object ref = address_;
+        getAddressHexBytes() {
+      java.lang.Object ref = addressHex_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        address_ = b;
+        addressHex_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -35231,10 +35521,13 @@ public final class TrezorMessage {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(2, signature_);
+        output.writeBytes(1, addressBin_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, address_);
+        output.writeBytes(2, signature_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, addressHex_);
       }
       unknownFields.writeTo(output);
     }
@@ -35247,10 +35540,14 @@ public final class TrezorMessage {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, signature_);
+          .computeBytesSize(1, addressBin_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, address_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, signature_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, addressHex_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -35268,15 +35565,20 @@ public final class TrezorMessage {
       com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumMessageSignature other = (com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumMessageSignature) obj;
 
       boolean result = true;
+      result = result && (hasAddressBin() == other.hasAddressBin());
+      if (hasAddressBin()) {
+        result = result && getAddressBin()
+            .equals(other.getAddressBin());
+      }
       result = result && (hasSignature() == other.hasSignature());
       if (hasSignature()) {
         result = result && getSignature()
             .equals(other.getSignature());
       }
-      result = result && (hasAddress() == other.hasAddress());
-      if (hasAddress()) {
-        result = result && getAddress()
-            .equals(other.getAddress());
+      result = result && (hasAddressHex() == other.hasAddressHex());
+      if (hasAddressHex()) {
+        result = result && getAddressHex()
+            .equals(other.getAddressHex());
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -35289,13 +35591,17 @@ public final class TrezorMessage {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasAddressBin()) {
+        hash = (37 * hash) + ADDRESSBIN_FIELD_NUMBER;
+        hash = (53 * hash) + getAddressBin().hashCode();
+      }
       if (hasSignature()) {
         hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
         hash = (53 * hash) + getSignature().hashCode();
       }
-      if (hasAddress()) {
-        hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-        hash = (53 * hash) + getAddress().hashCode();
+      if (hasAddressHex()) {
+        hash = (37 * hash) + ADDRESSHEX_FIELD_NUMBER;
+        hash = (53 * hash) + getAddressHex().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -35436,10 +35742,12 @@ public final class TrezorMessage {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        signature_ = com.google.protobuf.ByteString.EMPTY;
+        addressBin_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
-        address_ = "";
+        signature_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
+        addressHex_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -35471,11 +35779,15 @@ public final class TrezorMessage {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.signature_ = signature_;
+        result.addressBin_ = addressBin_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.address_ = address_;
+        result.signature_ = signature_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.addressHex_ = addressHex_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -35525,12 +35837,15 @@ public final class TrezorMessage {
 
       public Builder mergeFrom(com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumMessageSignature other) {
         if (other == com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumMessageSignature.getDefaultInstance()) return this;
+        if (other.hasAddressBin()) {
+          setAddressBin(other.getAddressBin());
+        }
         if (other.hasSignature()) {
           setSignature(other.getSignature());
         }
-        if (other.hasAddress()) {
-          bitField0_ |= 0x00000002;
-          address_ = other.address_;
+        if (other.hasAddressHex()) {
+          bitField0_ |= 0x00000004;
+          addressHex_ = other.addressHex_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -35563,6 +35878,57 @@ public final class TrezorMessage {
       }
       private int bitField0_;
 
+      private com.google.protobuf.ByteString addressBin_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * address used to sign the message (20 bytes, legacy firmware)
+       * </pre>
+       *
+       * <code>optional bytes addressBin = 1;</code>
+       */
+      public boolean hasAddressBin() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <pre>
+       * address used to sign the message (20 bytes, legacy firmware)
+       * </pre>
+       *
+       * <code>optional bytes addressBin = 1;</code>
+       */
+      public com.google.protobuf.ByteString getAddressBin() {
+        return addressBin_;
+      }
+      /**
+       * <pre>
+       * address used to sign the message (20 bytes, legacy firmware)
+       * </pre>
+       *
+       * <code>optional bytes addressBin = 1;</code>
+       */
+      public Builder setAddressBin(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        addressBin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * address used to sign the message (20 bytes, legacy firmware)
+       * </pre>
+       *
+       * <code>optional bytes addressBin = 1;</code>
+       */
+      public Builder clearAddressBin() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        addressBin_ = getDefaultInstance().getAddressBin();
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
@@ -35572,7 +35938,7 @@ public final class TrezorMessage {
        * <code>optional bytes signature = 2;</code>
        */
       public boolean hasSignature() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <pre>
@@ -35595,7 +35961,7 @@ public final class TrezorMessage {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000002;
         signature_ = value;
         onChanged();
         return this;
@@ -35608,38 +35974,38 @@ public final class TrezorMessage {
        * <code>optional bytes signature = 2;</code>
        */
       public Builder clearSignature() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         signature_ = getDefaultInstance().getSignature();
         onChanged();
         return this;
       }
 
-      private java.lang.Object address_ = "";
+      private java.lang.Object addressHex_ = "";
       /**
        * <pre>
-       * address used to sign the message
+       * address used to sign the message (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 3;</code>
+       * <code>optional string addressHex = 3;</code>
        */
-      public boolean hasAddress() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+      public boolean hasAddressHex() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <pre>
-       * address used to sign the message
+       * address used to sign the message (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 3;</code>
+       * <code>optional string addressHex = 3;</code>
        */
-      public java.lang.String getAddress() {
-        java.lang.Object ref = address_;
+      public java.lang.String getAddressHex() {
+        java.lang.Object ref = addressHex_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            address_ = s;
+            addressHex_ = s;
           }
           return s;
         } else {
@@ -35648,19 +36014,19 @@ public final class TrezorMessage {
       }
       /**
        * <pre>
-       * address used to sign the message
+       * address used to sign the message (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 3;</code>
+       * <code>optional string addressHex = 3;</code>
        */
       public com.google.protobuf.ByteString
-          getAddressBytes() {
-        java.lang.Object ref = address_;
+          getAddressHexBytes() {
+        java.lang.Object ref = addressHex_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          address_ = b;
+          addressHex_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -35668,48 +36034,48 @@ public final class TrezorMessage {
       }
       /**
        * <pre>
-       * address used to sign the message
+       * address used to sign the message (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 3;</code>
+       * <code>optional string addressHex = 3;</code>
        */
-      public Builder setAddress(
+      public Builder setAddressHex(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
-        address_ = value;
+  bitField0_ |= 0x00000004;
+        addressHex_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * address used to sign the message
+       * address used to sign the message (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 3;</code>
+       * <code>optional string addressHex = 3;</code>
        */
-      public Builder clearAddress() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        address_ = getDefaultInstance().getAddress();
+      public Builder clearAddressHex() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        addressHex_ = getDefaultInstance().getAddressHex();
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * address used to sign the message
+       * address used to sign the message (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 3;</code>
+       * <code>optional string addressHex = 3;</code>
        */
-      public Builder setAddressBytes(
+      public Builder setAddressHexBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
-        address_ = value;
+  bitField0_ |= 0x00000004;
+        addressHex_ = value;
         onChanged();
         return this;
       }
@@ -35772,6 +36138,23 @@ public final class TrezorMessage {
 
     /**
      * <pre>
+     * address to verify (20 bytes, legacy firmware)
+     * </pre>
+     *
+     * <code>optional bytes addressBin = 1;</code>
+     */
+    boolean hasAddressBin();
+    /**
+     * <pre>
+     * address to verify (20 bytes, legacy firmware)
+     * </pre>
+     *
+     * <code>optional bytes addressBin = 1;</code>
+     */
+    com.google.protobuf.ByteString getAddressBin();
+
+    /**
+     * <pre>
      * signature to verify
      * </pre>
      *
@@ -35806,29 +36189,29 @@ public final class TrezorMessage {
 
     /**
      * <pre>
-     * address to verify
+     * address to verify (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 4;</code>
+     * <code>optional string addressHex = 4;</code>
      */
-    boolean hasAddress();
+    boolean hasAddressHex();
     /**
      * <pre>
-     * address to verify
+     * address to verify (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 4;</code>
+     * <code>optional string addressHex = 4;</code>
      */
-    java.lang.String getAddress();
+    java.lang.String getAddressHex();
     /**
      * <pre>
-     * address to verify
+     * address to verify (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 4;</code>
+     * <code>optional string addressHex = 4;</code>
      */
     com.google.protobuf.ByteString
-        getAddressBytes();
+        getAddressHexBytes();
   }
   /**
    * <pre>
@@ -35851,9 +36234,10 @@ public final class TrezorMessage {
       super(builder);
     }
     private EthereumVerifyMessage() {
+      addressBin_ = com.google.protobuf.ByteString.EMPTY;
       signature_ = com.google.protobuf.ByteString.EMPTY;
       message_ = com.google.protobuf.ByteString.EMPTY;
-      address_ = "";
+      addressHex_ = "";
     }
 
     @java.lang.Override
@@ -35880,20 +36264,25 @@ public final class TrezorMessage {
             case 0:
               done = true;
               break;
-            case 18: {
+            case 10: {
               bitField0_ |= 0x00000001;
+              addressBin_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
               signature_ = input.readBytes();
               break;
             }
             case 26: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               message_ = input.readBytes();
               break;
             }
             case 34: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              address_ = bs;
+              bitField0_ |= 0x00000008;
+              addressHex_ = bs;
               break;
             }
             default: {
@@ -35929,6 +36318,29 @@ public final class TrezorMessage {
     }
 
     private int bitField0_;
+    public static final int ADDRESSBIN_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString addressBin_;
+    /**
+     * <pre>
+     * address to verify (20 bytes, legacy firmware)
+     * </pre>
+     *
+     * <code>optional bytes addressBin = 1;</code>
+     */
+    public boolean hasAddressBin() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <pre>
+     * address to verify (20 bytes, legacy firmware)
+     * </pre>
+     *
+     * <code>optional bytes addressBin = 1;</code>
+     */
+    public com.google.protobuf.ByteString getAddressBin() {
+      return addressBin_;
+    }
+
     public static final int SIGNATURE_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString signature_;
     /**
@@ -35939,7 +36351,7 @@ public final class TrezorMessage {
      * <code>optional bytes signature = 2;</code>
      */
     public boolean hasSignature() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <pre>
@@ -35962,7 +36374,7 @@ public final class TrezorMessage {
      * <code>optional bytes message = 3;</code>
      */
     public boolean hasMessage() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <pre>
@@ -35975,27 +36387,27 @@ public final class TrezorMessage {
       return message_;
     }
 
-    public static final int ADDRESS_FIELD_NUMBER = 4;
-    private volatile java.lang.Object address_;
+    public static final int ADDRESSHEX_FIELD_NUMBER = 4;
+    private volatile java.lang.Object addressHex_;
     /**
      * <pre>
-     * address to verify
+     * address to verify (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 4;</code>
+     * <code>optional string addressHex = 4;</code>
      */
-    public boolean hasAddress() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public boolean hasAddressHex() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <pre>
-     * address to verify
+     * address to verify (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 4;</code>
+     * <code>optional string addressHex = 4;</code>
      */
-    public java.lang.String getAddress() {
-      java.lang.Object ref = address_;
+    public java.lang.String getAddressHex() {
+      java.lang.Object ref = addressHex_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -36003,26 +36415,26 @@ public final class TrezorMessage {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          address_ = s;
+          addressHex_ = s;
         }
         return s;
       }
     }
     /**
      * <pre>
-     * address to verify
+     * address to verify (hex string, newer firmware)
      * </pre>
      *
-     * <code>optional string address = 4;</code>
+     * <code>optional string addressHex = 4;</code>
      */
     public com.google.protobuf.ByteString
-        getAddressBytes() {
-      java.lang.Object ref = address_;
+        getAddressHexBytes() {
+      java.lang.Object ref = addressHex_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        address_ = b;
+        addressHex_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -36044,13 +36456,16 @@ public final class TrezorMessage {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(2, signature_);
+        output.writeBytes(1, addressBin_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(3, message_);
+        output.writeBytes(2, signature_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, address_);
+        output.writeBytes(3, message_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, addressHex_);
       }
       unknownFields.writeTo(output);
     }
@@ -36063,14 +36478,18 @@ public final class TrezorMessage {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, signature_);
+          .computeBytesSize(1, addressBin_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, message_);
+          .computeBytesSize(2, signature_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, address_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, message_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, addressHex_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -36088,6 +36507,11 @@ public final class TrezorMessage {
       com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumVerifyMessage other = (com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumVerifyMessage) obj;
 
       boolean result = true;
+      result = result && (hasAddressBin() == other.hasAddressBin());
+      if (hasAddressBin()) {
+        result = result && getAddressBin()
+            .equals(other.getAddressBin());
+      }
       result = result && (hasSignature() == other.hasSignature());
       if (hasSignature()) {
         result = result && getSignature()
@@ -36098,10 +36522,10 @@ public final class TrezorMessage {
         result = result && getMessage()
             .equals(other.getMessage());
       }
-      result = result && (hasAddress() == other.hasAddress());
-      if (hasAddress()) {
-        result = result && getAddress()
-            .equals(other.getAddress());
+      result = result && (hasAddressHex() == other.hasAddressHex());
+      if (hasAddressHex()) {
+        result = result && getAddressHex()
+            .equals(other.getAddressHex());
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -36114,6 +36538,10 @@ public final class TrezorMessage {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasAddressBin()) {
+        hash = (37 * hash) + ADDRESSBIN_FIELD_NUMBER;
+        hash = (53 * hash) + getAddressBin().hashCode();
+      }
       if (hasSignature()) {
         hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
         hash = (53 * hash) + getSignature().hashCode();
@@ -36122,9 +36550,9 @@ public final class TrezorMessage {
         hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
         hash = (53 * hash) + getMessage().hashCode();
       }
-      if (hasAddress()) {
-        hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-        hash = (53 * hash) + getAddress().hashCode();
+      if (hasAddressHex()) {
+        hash = (37 * hash) + ADDRESSHEX_FIELD_NUMBER;
+        hash = (53 * hash) + getAddressHex().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -36267,12 +36695,14 @@ public final class TrezorMessage {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        signature_ = com.google.protobuf.ByteString.EMPTY;
+        addressBin_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
-        message_ = com.google.protobuf.ByteString.EMPTY;
+        signature_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
-        address_ = "";
+        message_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
+        addressHex_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -36304,15 +36734,19 @@ public final class TrezorMessage {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.signature_ = signature_;
+        result.addressBin_ = addressBin_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.message_ = message_;
+        result.signature_ = signature_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.address_ = address_;
+        result.message_ = message_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.addressHex_ = addressHex_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -36362,15 +36796,18 @@ public final class TrezorMessage {
 
       public Builder mergeFrom(com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumVerifyMessage other) {
         if (other == com.satoshilabs.trezor.lib.protobuf.TrezorMessage.EthereumVerifyMessage.getDefaultInstance()) return this;
+        if (other.hasAddressBin()) {
+          setAddressBin(other.getAddressBin());
+        }
         if (other.hasSignature()) {
           setSignature(other.getSignature());
         }
         if (other.hasMessage()) {
           setMessage(other.getMessage());
         }
-        if (other.hasAddress()) {
-          bitField0_ |= 0x00000004;
-          address_ = other.address_;
+        if (other.hasAddressHex()) {
+          bitField0_ |= 0x00000008;
+          addressHex_ = other.addressHex_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -36403,6 +36840,57 @@ public final class TrezorMessage {
       }
       private int bitField0_;
 
+      private com.google.protobuf.ByteString addressBin_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * address to verify (20 bytes, legacy firmware)
+       * </pre>
+       *
+       * <code>optional bytes addressBin = 1;</code>
+       */
+      public boolean hasAddressBin() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <pre>
+       * address to verify (20 bytes, legacy firmware)
+       * </pre>
+       *
+       * <code>optional bytes addressBin = 1;</code>
+       */
+      public com.google.protobuf.ByteString getAddressBin() {
+        return addressBin_;
+      }
+      /**
+       * <pre>
+       * address to verify (20 bytes, legacy firmware)
+       * </pre>
+       *
+       * <code>optional bytes addressBin = 1;</code>
+       */
+      public Builder setAddressBin(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        addressBin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * address to verify (20 bytes, legacy firmware)
+       * </pre>
+       *
+       * <code>optional bytes addressBin = 1;</code>
+       */
+      public Builder clearAddressBin() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        addressBin_ = getDefaultInstance().getAddressBin();
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
@@ -36412,7 +36900,7 @@ public final class TrezorMessage {
        * <code>optional bytes signature = 2;</code>
        */
       public boolean hasSignature() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <pre>
@@ -36435,7 +36923,7 @@ public final class TrezorMessage {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000002;
         signature_ = value;
         onChanged();
         return this;
@@ -36448,7 +36936,7 @@ public final class TrezorMessage {
        * <code>optional bytes signature = 2;</code>
        */
       public Builder clearSignature() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         signature_ = getDefaultInstance().getSignature();
         onChanged();
         return this;
@@ -36463,7 +36951,7 @@ public final class TrezorMessage {
        * <code>optional bytes message = 3;</code>
        */
       public boolean hasMessage() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <pre>
@@ -36486,7 +36974,7 @@ public final class TrezorMessage {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         message_ = value;
         onChanged();
         return this;
@@ -36499,38 +36987,38 @@ public final class TrezorMessage {
        * <code>optional bytes message = 3;</code>
        */
       public Builder clearMessage() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         message_ = getDefaultInstance().getMessage();
         onChanged();
         return this;
       }
 
-      private java.lang.Object address_ = "";
+      private java.lang.Object addressHex_ = "";
       /**
        * <pre>
-       * address to verify
+       * address to verify (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 4;</code>
+       * <code>optional string addressHex = 4;</code>
        */
-      public boolean hasAddress() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+      public boolean hasAddressHex() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <pre>
-       * address to verify
+       * address to verify (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 4;</code>
+       * <code>optional string addressHex = 4;</code>
        */
-      public java.lang.String getAddress() {
-        java.lang.Object ref = address_;
+      public java.lang.String getAddressHex() {
+        java.lang.Object ref = addressHex_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            address_ = s;
+            addressHex_ = s;
           }
           return s;
         } else {
@@ -36539,19 +37027,19 @@ public final class TrezorMessage {
       }
       /**
        * <pre>
-       * address to verify
+       * address to verify (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 4;</code>
+       * <code>optional string addressHex = 4;</code>
        */
       public com.google.protobuf.ByteString
-          getAddressBytes() {
-        java.lang.Object ref = address_;
+          getAddressHexBytes() {
+        java.lang.Object ref = addressHex_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          address_ = b;
+          addressHex_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -36559,48 +37047,48 @@ public final class TrezorMessage {
       }
       /**
        * <pre>
-       * address to verify
+       * address to verify (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 4;</code>
+       * <code>optional string addressHex = 4;</code>
        */
-      public Builder setAddress(
+      public Builder setAddressHex(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
-        address_ = value;
+  bitField0_ |= 0x00000008;
+        addressHex_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * address to verify
+       * address to verify (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 4;</code>
+       * <code>optional string addressHex = 4;</code>
        */
-      public Builder clearAddress() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        address_ = getDefaultInstance().getAddress();
+      public Builder clearAddressHex() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        addressHex_ = getDefaultInstance().getAddressHex();
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * address to verify
+       * address to verify (hex string, newer firmware)
        * </pre>
        *
-       * <code>optional string address = 4;</code>
+       * <code>optional string addressHex = 4;</code>
        */
-      public Builder setAddressBytes(
+      public Builder setAddressHexBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
-        address_ = value;
+  bitField0_ |= 0x00000008;
+        addressHex_ = value;
         onChanged();
         return this;
       }
@@ -37085,85 +37573,88 @@ public final class TrezorMessage {
       "thereumPublicKey\022,\n\004node\030\001 \001(\0132\036.hw.trez" +
       "or.messages.HDNodeType\022\014\n\004xpub\030\002 \001(\t\"=\n\022" +
       "EthereumGetAddress\022\021\n\taddress_n\030\001 \003(\r\022\024\n" +
-      "\014show_display\030\002 \001(\010\"\"\n\017EthereumAddress\022\017" +
-      "\n\007address\030\002 \001(\t\"\307\001\n\016EthereumSignTx\022\021\n\tad" +
-      "dress_n\030\001 \003(\r\022\r\n\005nonce\030\002 \001(\014\022\021\n\tgas_pric" +
-      "e\030\003 \001(\014\022\021\n\tgas_limit\030\004 \001(\014\022\n\n\002to\030\013 \001(\t\022\r" +
-      "\n\005value\030\006 \001(\014\022\032\n\022data_initial_chunk\030\007 \001(" +
-      "\014\022\023\n\013data_length\030\010 \001(\r\022\020\n\010chain_id\030\t \001(\r" +
-      "\022\017\n\007tx_type\030\n \001(\r\"g\n\021EthereumTxRequest\022\023" +
-      "\n\013data_length\030\001 \001(\r\022\023\n\013signature_v\030\002 \001(\r" +
-      "\022\023\n\013signature_r\030\003 \001(\014\022\023\n\013signature_s\030\004 \001" +
-      "(\014\"#\n\rEthereumTxAck\022\022\n\ndata_chunk\030\001 \001(\014\"" +
-      "9\n\023EthereumSignMessage\022\021\n\taddress_n\030\001 \003(" +
-      "\r\022\017\n\007message\030\002 \001(\014\">\n\030EthereumMessageSig" +
-      "nature\022\021\n\tsignature\030\002 \001(\014\022\017\n\007address\030\003 \001" +
-      "(\t\"L\n\025EthereumVerifyMessage\022\021\n\tsignature" +
-      "\030\002 \001(\014\022\017\n\007message\030\003 \001(\014\022\017\n\007address\030\004 \001(\t" +
-      "*\261\020\n\013MessageType\022$\n\026MessageType_Initiali" +
-      "ze\020\000\032\010\220\265\030\001\260\265\030\001\022\032\n\020MessageType_Ping\020\001\032\004\220\265" +
-      "\030\001\022\035\n\023MessageType_Success\020\002\032\004\230\265\030\001\022\035\n\023Mes" +
-      "sageType_Failure\020\003\032\004\230\265\030\001\022\037\n\025MessageType_" +
-      "ChangePin\020\004\032\004\220\265\030\001\022 \n\026MessageType_WipeDev" +
-      "ice\020\005\032\004\220\265\030\001\022 \n\026MessageType_GetEntropy\020\t\032" +
-      "\004\220\265\030\001\022\035\n\023MessageType_Entropy\020\n\032\004\230\265\030\001\022 \n\026" +
-      "MessageType_LoadDevice\020\r\032\004\220\265\030\001\022!\n\027Messag" +
-      "eType_ResetDevice\020\016\032\004\220\265\030\001\022\036\n\024MessageType" +
-      "_Features\020\021\032\004\230\265\030\001\022&\n\034MessageType_PinMatr" +
-      "ixRequest\020\022\032\004\230\265\030\001\022*\n\030MessageType_PinMatr" +
-      "ixAck\020\023\032\014\220\265\030\001\260\265\030\001\300\265\030\001\022 \n\022MessageType_Can" +
-      "cel\020\024\032\010\220\265\030\001\260\265\030\001\022\"\n\030MessageType_ClearSess" +
-      "ion\020\030\032\004\220\265\030\001\022#\n\031MessageType_ApplySettings" +
-      "\020\031\032\004\220\265\030\001\022#\n\031MessageType_ButtonRequest\020\032\032" +
-      "\004\230\265\030\001\022\'\n\025MessageType_ButtonAck\020\033\032\014\220\265\030\001\260\265" +
-      "\030\001\300\265\030\001\022 \n\026MessageType_ApplyFlags\020\034\032\004\220\265\030\001" +
-      "\022\"\n\030MessageType_BackupDevice\020\"\032\004\220\265\030\001\022$\n\032" +
-      "MessageType_EntropyRequest\020#\032\004\230\265\030\001\022 \n\026Me" +
-      "ssageType_EntropyAck\020$\032\004\220\265\030\001\022\'\n\035MessageT" +
-      "ype_PassphraseRequest\020)\032\004\230\265\030\001\022+\n\031Message" +
-      "Type_PassphraseAck\020*\032\014\220\265\030\001\260\265\030\001\300\265\030\001\022,\n\"Me" +
-      "ssageType_PassphraseStateRequest\020M\032\004\230\265\030\001" +
-      "\0220\n\036MessageType_PassphraseStateAck\020N\032\014\220\265" +
-      "\030\001\260\265\030\001\300\265\030\001\022$\n\032MessageType_RecoveryDevice" +
-      "\020-\032\004\220\265\030\001\022!\n\027MessageType_WordRequest\020.\032\004\230" +
-      "\265\030\001\022\035\n\023MessageType_WordAck\020/\032\004\220\265\030\001\022!\n\027Me" +
-      "ssageType_GetFeatures\0207\032\004\220\265\030\001\022#\n\031Message" +
-      "Type_SetU2FCounter\020?\032\004\220\265\030\001\022\'\n\031MessageTyp" +
-      "e_FirmwareErase\020\006\032\010\220\265\030\001\270\265\030\001\022(\n\032MessageTy" +
-      "pe_FirmwareUpload\020\007\032\010\220\265\030\001\270\265\030\001\022)\n\033Message" +
-      "Type_FirmwareRequest\020\010\032\010\230\265\030\001\270\265\030\001\022\"\n\024Mess" +
-      "ageType_SelfTest\020 \032\010\220\265\030\001\270\265\030\001\022$\n\032MessageT" +
-      "ype_CipherKeyValue\020\027\032\004\220\265\030\001\022&\n\034MessageTyp" +
-      "e_CipheredKeyValue\0200\032\004\230\265\030\001\022\"\n\030MessageTyp" +
-      "e_SignIdentity\0205\032\004\220\265\030\001\022$\n\032MessageType_Si" +
-      "gnedIdentity\0206\032\004\230\265\030\001\022\'\n\035MessageType_GetE" +
-      "CDHSessionKey\020=\032\004\220\265\030\001\022$\n\032MessageType_ECD" +
-      "HSessionKey\020>\032\004\230\265\030\001\022 \n\026MessageType_CosiC" +
-      "ommit\020G\032\004\220\265\030\001\022$\n\032MessageType_CosiCommitm" +
-      "ent\020H\032\004\230\265\030\001\022\036\n\024MessageType_CosiSign\020I\032\004\220" +
-      "\265\030\001\022#\n\031MessageType_CosiSignature\020J\032\004\230\265\030\001" +
-      "\022+\n MessageType_EthereumGetPublicKey\020\302\003\032" +
-      "\004\220\265\030\001\022(\n\035MessageType_EthereumPublicKey\020\303" +
-      "\003\032\004\230\265\030\001\022(\n\036MessageType_EthereumGetAddres" +
-      "s\0208\032\004\220\265\030\001\022%\n\033MessageType_EthereumAddress" +
-      "\0209\032\004\230\265\030\001\022$\n\032MessageType_EthereumSignTx\020:" +
-      "\032\004\220\265\030\001\022\'\n\035MessageType_EthereumTxRequest\020" +
-      ";\032\004\230\265\030\001\022#\n\031MessageType_EthereumTxAck\020<\032\004" +
-      "\220\265\030\001\022)\n\037MessageType_EthereumSignMessage\020" +
-      "@\032\004\220\265\030\001\022+\n!MessageType_EthereumVerifyMes" +
-      "sage\020A\032\004\220\265\030\001\022.\n$MessageType_EthereumMess" +
-      "ageSignature\020B\032\004\230\265\030\001:4\n\007wire_in\022!.google" +
-      ".protobuf.EnumValueOptions\030\322\206\003 \001(\010:5\n\010wi" +
-      "re_out\022!.google.protobuf.EnumValueOption" +
-      "s\030\323\206\003 \001(\010::\n\rwire_debug_in\022!.google.prot" +
-      "obuf.EnumValueOptions\030\324\206\003 \001(\010:;\n\016wire_de" +
-      "bug_out\022!.google.protobuf.EnumValueOptio" +
-      "ns\030\325\206\003 \001(\010:6\n\twire_tiny\022!.google.protobu" +
-      "f.EnumValueOptions\030\326\206\003 \001(\010:<\n\017wire_bootl" +
-      "oader\022!.google.protobuf.EnumValueOptions" +
-      "\030\327\206\003 \001(\010:8\n\013wire_no_fsm\022!.google.protobu" +
-      "f.EnumValueOptions\030\330\206\003 \001(\010B4\n#com.satosh" +
-      "ilabs.trezor.lib.protobufB\rTrezorMessage"
+      "\014show_display\030\002 \001(\010\"9\n\017EthereumAddress\022\022" +
+      "\n\naddressBin\030\001 \001(\014\022\022\n\naddressHex\030\002 \001(\t\"\331" +
+      "\001\n\016EthereumSignTx\022\021\n\taddress_n\030\001 \003(\r\022\r\n\005" +
+      "nonce\030\002 \001(\014\022\021\n\tgas_price\030\003 \001(\014\022\021\n\tgas_li" +
+      "mit\030\004 \001(\014\022\r\n\005toBin\030\005 \001(\014\022\r\n\005toHex\030\013 \001(\t\022" +
+      "\r\n\005value\030\006 \001(\014\022\032\n\022data_initial_chunk\030\007 \001" +
+      "(\014\022\023\n\013data_length\030\010 \001(\r\022\020\n\010chain_id\030\t \001(" +
+      "\r\022\017\n\007tx_type\030\n \001(\r\"g\n\021EthereumTxRequest\022" +
+      "\023\n\013data_length\030\001 \001(\r\022\023\n\013signature_v\030\002 \001(" +
+      "\r\022\023\n\013signature_r\030\003 \001(\014\022\023\n\013signature_s\030\004 " +
+      "\001(\014\"#\n\rEthereumTxAck\022\022\n\ndata_chunk\030\001 \001(\014" +
+      "\"9\n\023EthereumSignMessage\022\021\n\taddress_n\030\001 \003" +
+      "(\r\022\017\n\007message\030\002 \001(\014\"U\n\030EthereumMessageSi" +
+      "gnature\022\022\n\naddressBin\030\001 \001(\014\022\021\n\tsignature" +
+      "\030\002 \001(\014\022\022\n\naddressHex\030\003 \001(\t\"c\n\025EthereumVe" +
+      "rifyMessage\022\022\n\naddressBin\030\001 \001(\014\022\021\n\tsigna" +
+      "ture\030\002 \001(\014\022\017\n\007message\030\003 \001(\014\022\022\n\naddressHe" +
+      "x\030\004 \001(\t*\261\020\n\013MessageType\022$\n\026MessageType_I" +
+      "nitialize\020\000\032\010\220\265\030\001\260\265\030\001\022\032\n\020MessageType_Pin" +
+      "g\020\001\032\004\220\265\030\001\022\035\n\023MessageType_Success\020\002\032\004\230\265\030\001" +
+      "\022\035\n\023MessageType_Failure\020\003\032\004\230\265\030\001\022\037\n\025Messa" +
+      "geType_ChangePin\020\004\032\004\220\265\030\001\022 \n\026MessageType_" +
+      "WipeDevice\020\005\032\004\220\265\030\001\022 \n\026MessageType_GetEnt" +
+      "ropy\020\t\032\004\220\265\030\001\022\035\n\023MessageType_Entropy\020\n\032\004\230" +
+      "\265\030\001\022 \n\026MessageType_LoadDevice\020\r\032\004\220\265\030\001\022!\n" +
+      "\027MessageType_ResetDevice\020\016\032\004\220\265\030\001\022\036\n\024Mess" +
+      "ageType_Features\020\021\032\004\230\265\030\001\022&\n\034MessageType_" +
+      "PinMatrixRequest\020\022\032\004\230\265\030\001\022*\n\030MessageType_" +
+      "PinMatrixAck\020\023\032\014\220\265\030\001\260\265\030\001\300\265\030\001\022 \n\022MessageT" +
+      "ype_Cancel\020\024\032\010\220\265\030\001\260\265\030\001\022\"\n\030MessageType_Cl" +
+      "earSession\020\030\032\004\220\265\030\001\022#\n\031MessageType_ApplyS" +
+      "ettings\020\031\032\004\220\265\030\001\022#\n\031MessageType_ButtonReq" +
+      "uest\020\032\032\004\230\265\030\001\022\'\n\025MessageType_ButtonAck\020\033\032" +
+      "\014\220\265\030\001\260\265\030\001\300\265\030\001\022 \n\026MessageType_ApplyFlags\020" +
+      "\034\032\004\220\265\030\001\022\"\n\030MessageType_BackupDevice\020\"\032\004\220" +
+      "\265\030\001\022$\n\032MessageType_EntropyRequest\020#\032\004\230\265\030" +
+      "\001\022 \n\026MessageType_EntropyAck\020$\032\004\220\265\030\001\022\'\n\035M" +
+      "essageType_PassphraseRequest\020)\032\004\230\265\030\001\022+\n\031" +
+      "MessageType_PassphraseAck\020*\032\014\220\265\030\001\260\265\030\001\300\265\030" +
+      "\001\022,\n\"MessageType_PassphraseStateRequest\020" +
+      "M\032\004\230\265\030\001\0220\n\036MessageType_PassphraseStateAc" +
+      "k\020N\032\014\220\265\030\001\260\265\030\001\300\265\030\001\022$\n\032MessageType_Recover" +
+      "yDevice\020-\032\004\220\265\030\001\022!\n\027MessageType_WordReque" +
+      "st\020.\032\004\230\265\030\001\022\035\n\023MessageType_WordAck\020/\032\004\220\265\030" +
+      "\001\022!\n\027MessageType_GetFeatures\0207\032\004\220\265\030\001\022#\n\031" +
+      "MessageType_SetU2FCounter\020?\032\004\220\265\030\001\022\'\n\031Mes" +
+      "sageType_FirmwareErase\020\006\032\010\220\265\030\001\270\265\030\001\022(\n\032Me" +
+      "ssageType_FirmwareUpload\020\007\032\010\220\265\030\001\270\265\030\001\022)\n\033" +
+      "MessageType_FirmwareRequest\020\010\032\010\230\265\030\001\270\265\030\001\022" +
+      "\"\n\024MessageType_SelfTest\020 \032\010\220\265\030\001\270\265\030\001\022$\n\032M" +
+      "essageType_CipherKeyValue\020\027\032\004\220\265\030\001\022&\n\034Mes" +
+      "sageType_CipheredKeyValue\0200\032\004\230\265\030\001\022\"\n\030Mes" +
+      "sageType_SignIdentity\0205\032\004\220\265\030\001\022$\n\032Message" +
+      "Type_SignedIdentity\0206\032\004\230\265\030\001\022\'\n\035MessageTy" +
+      "pe_GetECDHSessionKey\020=\032\004\220\265\030\001\022$\n\032MessageT" +
+      "ype_ECDHSessionKey\020>\032\004\230\265\030\001\022 \n\026MessageTyp" +
+      "e_CosiCommit\020G\032\004\220\265\030\001\022$\n\032MessageType_Cosi" +
+      "Commitment\020H\032\004\230\265\030\001\022\036\n\024MessageType_CosiSi" +
+      "gn\020I\032\004\220\265\030\001\022#\n\031MessageType_CosiSignature\020" +
+      "J\032\004\230\265\030\001\022+\n MessageType_EthereumGetPublic" +
+      "Key\020\302\003\032\004\220\265\030\001\022(\n\035MessageType_EthereumPubl" +
+      "icKey\020\303\003\032\004\230\265\030\001\022(\n\036MessageType_EthereumGe" +
+      "tAddress\0208\032\004\220\265\030\001\022%\n\033MessageType_Ethereum" +
+      "Address\0209\032\004\230\265\030\001\022$\n\032MessageType_EthereumS" +
+      "ignTx\020:\032\004\220\265\030\001\022\'\n\035MessageType_EthereumTxR" +
+      "equest\020;\032\004\230\265\030\001\022#\n\031MessageType_EthereumTx" +
+      "Ack\020<\032\004\220\265\030\001\022)\n\037MessageType_EthereumSignM" +
+      "essage\020@\032\004\220\265\030\001\022+\n!MessageType_EthereumVe" +
+      "rifyMessage\020A\032\004\220\265\030\001\022.\n$MessageType_Ether" +
+      "eumMessageSignature\020B\032\004\230\265\030\001:4\n\007wire_in\022!" +
+      ".google.protobuf.EnumValueOptions\030\322\206\003 \001(" +
+      "\010:5\n\010wire_out\022!.google.protobuf.EnumValu" +
+      "eOptions\030\323\206\003 \001(\010::\n\rwire_debug_in\022!.goog" +
+      "le.protobuf.EnumValueOptions\030\324\206\003 \001(\010:;\n\016" +
+      "wire_debug_out\022!.google.protobuf.EnumVal" +
+      "ueOptions\030\325\206\003 \001(\010:6\n\twire_tiny\022!.google." +
+      "protobuf.EnumValueOptions\030\326\206\003 \001(\010:<\n\017wir" +
+      "e_bootloader\022!.google.protobuf.EnumValue" +
+      "Options\030\327\206\003 \001(\010:8\n\013wire_no_fsm\022!.google." +
+      "protobuf.EnumValueOptions\030\330\206\003 \001(\010B4\n#com" +
+      ".satoshilabs.trezor.lib.protobufB\rTrezor" +
+      "Message"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -37393,13 +37884,13 @@ public final class TrezorMessage {
     internal_static_hw_trezor_messages_EthereumAddress_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_hw_trezor_messages_EthereumAddress_descriptor,
-        new java.lang.String[] { "Address", });
+        new java.lang.String[] { "AddressBin", "AddressHex", });
     internal_static_hw_trezor_messages_EthereumSignTx_descriptor =
       getDescriptor().getMessageTypes().get(36);
     internal_static_hw_trezor_messages_EthereumSignTx_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_hw_trezor_messages_EthereumSignTx_descriptor,
-        new java.lang.String[] { "AddressN", "Nonce", "GasPrice", "GasLimit", "To", "Value", "DataInitialChunk", "DataLength", "ChainId", "TxType", });
+        new java.lang.String[] { "AddressN", "Nonce", "GasPrice", "GasLimit", "ToBin", "ToHex", "Value", "DataInitialChunk", "DataLength", "ChainId", "TxType", });
     internal_static_hw_trezor_messages_EthereumTxRequest_descriptor =
       getDescriptor().getMessageTypes().get(37);
     internal_static_hw_trezor_messages_EthereumTxRequest_fieldAccessorTable = new
@@ -37423,13 +37914,13 @@ public final class TrezorMessage {
     internal_static_hw_trezor_messages_EthereumMessageSignature_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_hw_trezor_messages_EthereumMessageSignature_descriptor,
-        new java.lang.String[] { "Signature", "Address", });
+        new java.lang.String[] { "AddressBin", "Signature", "AddressHex", });
     internal_static_hw_trezor_messages_EthereumVerifyMessage_descriptor =
       getDescriptor().getMessageTypes().get(41);
     internal_static_hw_trezor_messages_EthereumVerifyMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_hw_trezor_messages_EthereumVerifyMessage_descriptor,
-        new java.lang.String[] { "Signature", "Message", "Address", });
+        new java.lang.String[] { "AddressBin", "Signature", "Message", "AddressHex", });
     wireIn.internalInit(descriptor.getExtensions().get(0));
     wireOut.internalInit(descriptor.getExtensions().get(1));
     wireDebugIn.internalInit(descriptor.getExtensions().get(2));
