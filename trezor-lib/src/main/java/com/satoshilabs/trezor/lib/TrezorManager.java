@@ -116,6 +116,11 @@ public class TrezorManager {
         if (usbDevice.getVendorId() == 0x1209) {
             return usbDevice.getProductId() == 0x53c0 || usbDevice.getProductId() == 0x53c1;
         }
+
+        // KeepKey
+        if (usbDevice.getVendorId() == 11044) {
+            return usbDevice.getProductId() == 2;
+        }
         return false;
     }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Trezor v1: VID 0x534c PID 0x0001  -->
+    <usb-device vendor-id="21324" product-id="1" />
+    <!-- Trezor v2: VID 0x1209 PID 0x53c0  -->
+    <usb-device vendor-id="4617" product-id="21440" />
+    <!-- Trezor v2: VID 0x1209 PID 0x53c1  -->
+    <usb-device vendor-id="4617" product-id="21441" />
+    <!-- KeepKey -->
+    <usb-device vendor-id="11044" product-id="2" />
+
+</resources>
